@@ -52,7 +52,6 @@ RSS = [
   ('dbnet',     'DataBreaches.net',      'press', 'en', 'https://databreaches.net/feed/'),
   ('csdive',    'Cybersecurity Dive',    'press', 'en', 'https://www.cybersecuritydive.com/feeds/news/'),
   ('register',  'The Register',          'press', 'en', 'https://www.theregister.com/security/headlines.atom'),
-  ('indcyber',  'Industrial Cyber',      'press', 'en', 'https://industrialcyber.co/feed/'),
   ('lemagit',   'LeMagIT',               'press', 'fr', 'https://www.lemagit.fr/rss/ContentSyndication.xml'),
   ('zataz',     'ZATAZ',                 'press', 'fr', 'https://www.zataz.com/feed/'),
   ('lmi',       'Le Monde Informatique', 'press', 'fr', 'https://www.lemondeinformatique.fr/flux-rss/thematique/securite/rss.xml'),
@@ -84,6 +83,7 @@ GNEWS = [
   ('gn_trade_en', 'en', 'US', '(cyberattack OR ransomware OR "cyber attack" OR "data breach" OR hackers) (site:foodmanufacturing.com OR site:foodprocessing.com OR site:dairyreporter.com OR site:just-food.com OR site:foodnavigator.com OR site:foodnavigator-usa.com OR site:fooddive.com OR site:supermarketnews.com OR site:dairyherd.com OR site:dairyfoods.com)'),
   ('gn_trade_fr', 'fr', 'FR', '(cyberattaque OR rançongiciel OR ransomware OR piratage) (site:lsa-conso.fr OR site:processalimentaire.com OR site:rayon-boissons.com OR site:reussir.fr OR site:lafranceagricole.fr OR site:linfo-durable.fr OR site:agra.fr)'),
   ('gn_cybernews', 'en', 'US', '(ransomware OR breach OR cyberattack OR hackers) site:cybernews.com'),
+  ('gn_indcyber', 'en', 'US', '(cyberattack OR ransomware OR breach OR hackers OR attack OR OT OR ICS) site:industrialcyber.co'),
   ('gn_rhc', 'it', 'IT', '(attacco OR ransomware OR "data breach" OR violazione) site:redhotcyber.com'),
   ('gn_de', 'de', 'DE', '(Cyberangriff OR Ransomware OR Hackerangriff) (Molkerei OR Käserei OR Lebensmittel OR Milch)'),
 ]
