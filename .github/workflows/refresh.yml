@@ -1,5 +1,5 @@
 # Collects public cyber-incident sources every 10 minutes and publishes the normalised data
-# (incidents.json, status.json) to the "data" branch. No web page is published from this repository.
+# (manifest.json + monthly chunks, status.json) to the "data" branch. No web page is published from this repository.
 name: Collect sources
 on:
   schedule:
@@ -35,6 +35,6 @@ jobs:
       - name: Publish data branch
         run: |
           cd out
-          git init -q -b data && git add incidents.json status.json
+          git init -q -b data && git add manifest.json status.json chunks
           git -c user.name="collector" -c user.email="actions@users.noreply.github.com" commit -q -m "data $(date -u +%FT%TZ)"
           git push -q -f "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git" data

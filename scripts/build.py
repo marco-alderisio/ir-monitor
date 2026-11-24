@@ -3,7 +3,7 @@
 Incident source collector (Python 3.9+, standard library only).
 
 Collects cyber-incident signals from authoritative public sources, normalises them into one
-record format and writes ./site/data/incidents.json + status.json for the static page.
+record format and writes manifest.json + monthly chunks (chunks/m-YYYY-MM.json) and status.json.
 Runs on GitHub Actions (or any scheduler); nothing runs on a server.
 
 Signal types
@@ -389,8 +389,20 @@ def main():
         except Exception: pass
     status['count'] = len(allr)
     status['new'] = sum(1 for x in allr if x.get('seen') == now_s)
-    with open(os.path.join(OUT, 'incidents.json'), 'w') as f:
-        f.write('[\n' + ',\n'.join(json.dumps(x, ensure_ascii=False, separators=(',', ':')) for x in allr) + '\n]\n')
+    # Monthly chunks (by event month) + manifest: the page loads the newest months first, shows them at once,
+    # then fetches older months in the background; unchanged months are served from its local cache.
+    cdir = os.path.join(OUT, 'chunks'); os.makedirs(cdir, exist_ok=True)
+    for f in os.listdir(cdir): os.remove(os.path.join(cdir, f))
+    months = {}
+    for x in allr: months.setdefault((x.get('t') or x.get('seen', ''))[:7] or 'unknown', []).append(x)
+    chunks = []
+    for m in sorted(months, reverse=True):
+        body = '[\n' + ',\n'.join(json.dumps(x, ensure_ascii=False, separators=(',', ':')) for x in months[m]) + '\n]\n'
+        h = hashlib.sha1(body.encode()).hexdigest()[:12]
+        with open(os.path.join(cdir, f'm-{m}.json'), 'w') as f: f.write(body)
+        chunks.append({'id': m, 'file': f'chunks/m-{m}.json', 'n': len(months[m]), 'h': h, 'bytes': len(body.encode())})
+    with open(os.path.join(OUT, 'manifest.json'), 'w') as f:
+        json.dump({'format': 2, 'built_utc': status['built_utc'], 'count': len(allr), 'chunks': chunks, 'status': status}, f, separators=(',', ':'))
     with open(os.path.join(OUT, 'status.json'), 'w') as f:
         json.dump(status, f, indent=1)
     if need_history and status['sources'].get('pt', {}).get('history_rows'):
