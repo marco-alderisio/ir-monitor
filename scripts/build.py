@@ -380,6 +380,13 @@ def main():
         if not x.get('t'): x['t'] = x.get('seen', now_s)
     allr.sort(key=lambda x: (x.get('seen', ''), x.get('t', '')), reverse=True)
     status['built_utc'] = now_s
+    sf = os.path.join(os.path.dirname(PREV) or '.', 'started.txt')   # first run of the collector: press/SEC/CERT coverage starts here
+    try: status['since'] = open(sf).read().strip()
+    except Exception:
+        status['since'] = now_s
+        try:
+            os.makedirs(os.path.dirname(sf) or '.', exist_ok=True); open(sf, 'w').write(now_s)
+        except Exception: pass
     status['count'] = len(allr)
     status['new'] = sum(1 for x in allr if x.get('seen') == now_s)
     with open(os.path.join(OUT, 'incidents.json'), 'w') as f:
