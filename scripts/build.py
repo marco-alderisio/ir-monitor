@@ -13,8 +13,7 @@ Signal types
   news        press report (cybersecurity press, food-industry trade press, Google News)
   advisory    government CERT alert / advisory
 
-Industry tagging, Lactalis relevance and country grouping are done in the browser from the
-configuration block in index.html, so they can be changed without rebuilding the data.
+Industry tagging, relevance and country grouping are left to the consuming application.
 
 Environment variables (all optional)
   IR_OUT        output folder                          (default: site/data)
