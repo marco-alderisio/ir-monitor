@@ -1,0 +1,61 @@
+# Incident Radar — rebuilds the incident data and publishes the site to GitHub Pages every 10 minutes.
+# No server: GitHub Actions runs scripts/build.py, which reads the public sources and writes site/data/.
+# The ./cache folder carries the history (and the "first detected" times) from one run to the next.
+name: Refresh incidents and publish
+on:
+  schedule:
+    - cron: "*/10 * * * *"     # GitHub may delay scheduled runs at busy times
+  workflow_dispatch:
+  push:
+    branches: [main]
+permissions:
+  contents: write      # to publish the data branch (raw data for the standalone file / other copies)
+  pages: write
+  id-token: write
+concurrency:
+  group: pages
+  cancel-in-progress: false
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - name: Restore history
+        uses: actions/cache@v4
+        with:
+          path: cache
+          key: ir-cache-${{ github.run_id }}
+          restore-keys: ir-cache-
+      - name: Build data
+        env:
+          IR_OUT: site/data
+          IR_PREV: cache/incidents.json
+          IR_UA: ${{ vars.IR_UA }}            # e.g. "IncidentRadar/0.1 (Lactalis Enterprise Security; contact: security@yourdomain)" — SEC requires a contact
+          RL_BASE: ${{ vars.RL_BASE }}        # optional: ransomware.live API base (default: legacy free API)
+          RL_HEADER: ${{ secrets.RL_HEADER }} # optional: "Header-Name: token" for a personal ransomware.live token
+        run: |
+          python3 scripts/build.py
+          cp index.html logo-mail.png site/
+      - name: Publish data branch
+        # Same incidents.json/status.json on the "data" branch, served by raw.githubusercontent.com with open CORS:
+        # set remoteData in IR_CONFIG to https://raw.githubusercontent.com/<account>/<repo>/data/ to make any copy live.
+        run: |
+          cd site/data
+          git init -q -b data && git add incidents.json status.json
+          git -c user.name="incident-radar" -c user.email="actions@users.noreply.github.com" commit -q -m "data $(date -u +%FT%TZ)"
+          git push -q -f "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git" data
+          rm -rf .git
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: site
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
