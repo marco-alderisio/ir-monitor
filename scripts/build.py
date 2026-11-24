@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Incident Radar — data builder (Python 3.9+, standard library only).
+Incident source collector (Python 3.9+, standard library only).
 
 Collects cyber-incident signals from authoritative public sources, normalises them into one
 record format and writes ./site/data/incidents.json + status.json for the static page.
@@ -32,7 +32,7 @@ from concurrent.futures import ThreadPoolExecutor
 OUT = os.environ.get('IR_OUT') or 'site/data'
 PREV = os.environ.get('IR_PREV') or 'cache/incidents.json'
 KEEP_DAYS = int(os.environ.get('IR_KEEP_DAYS', '180'))
-UA = os.environ.get('IR_UA') or 'IncidentRadar/0.1 (Enterprise Security monitoring; contact: security@example.com)'
+UA = os.environ.get('IR_UA') or 'incident-collector/1.0 (contact: security@example.com)'
 RL_BASE = (os.environ.get('RL_BASE') or 'https://api.ransomware.live/v2').rstrip('/')
 RL_HEADER = os.environ.get('RL_HEADER', '')
 OFFLINE = set(filter(None, os.environ.get('IR_OFFLINE', '').split(',')))
