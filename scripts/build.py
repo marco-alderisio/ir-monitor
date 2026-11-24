@@ -318,8 +318,10 @@ def main():
             'pt': ('ransomware.live mirror (privtools, GitHub)', 'claims', src_pt),
             'tc': ('ThreatCluster Ransomware-Intel (GitHub)', 'claims', src_tc),
             'sec': ('SEC EDGAR — Form 8-K cyber disclosures', 'regulatory', src_sec)}
-    oldest = min((x.get('t') or '9') for x in prev if x.get('type') == 'claim') if prev else ''
-    need_history = not prev or oldest[:10] > (NOW - dt.timedelta(days=KEEP_DAYS - 45)).strftime('%Y-%m-%d')
+    marker = os.path.join(os.path.dirname(PREV) or '.', 'history.done')   # history backfilled once per retention setting
+    try: done = int(open(marker).read().strip() or 0)
+    except Exception: done = 0
+    need_history = not prev or done < KEEP_DAYS
     if need_history: jobs['pt_full'] = (f'ransomware.live history bootstrap, {KEEP_DAYS} days (privtools)', 'claims', src_pt_full)
     for key, name, cat, lang, url in RSS:
         jobs[key] = (name, cat, (lambda k=key, n=name, c=cat, l=lang, u=url: news_items(k, n, c, l, u)))
@@ -384,6 +386,8 @@ def main():
         f.write('[\n' + ',\n'.join(json.dumps(x, ensure_ascii=False, separators=(',', ':')) for x in allr) + '\n]\n')
     with open(os.path.join(OUT, 'status.json'), 'w') as f:
         json.dump(status, f, indent=1)
+    if need_history and status['sources'].get('pt', {}).get('history_rows'):
+        os.makedirs(os.path.dirname(marker) or '.', exist_ok=True); open(marker, 'w').write(str(KEEP_DAYS))
     if os.path.dirname(PREV):
         os.makedirs(os.path.dirname(PREV), exist_ok=True)
         with open(PREV, 'w') as f: json.dump(allr, f, ensure_ascii=False, separators=(',', ':'))
