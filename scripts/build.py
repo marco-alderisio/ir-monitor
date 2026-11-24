@@ -51,23 +51,20 @@ RSS = [
   ('darkread',  'Dark Reading',          'press', 'en', 'https://www.darkreading.com/rss.xml'),
   ('secaff',    'Security Affairs',      'press', 'en', 'https://securityaffairs.com/feed'),
   ('dbnet',     'DataBreaches.net',      'press', 'en', 'https://databreaches.net/feed/'),
-  ('cybernews', 'Cybernews',             'press', 'en', 'https://cybernews.com/feed/'),
+  ('csdive',    'Cybersecurity Dive',    'press', 'en', 'https://www.cybersecuritydive.com/feeds/news/'),
   ('register',  'The Register',          'press', 'en', 'https://www.theregister.com/security/headlines.atom'),
   ('indcyber',  'Industrial Cyber',      'press', 'en', 'https://industrialcyber.co/feed/'),
   ('lemagit',   'LeMagIT',               'press', 'fr', 'https://www.lemagit.fr/rss/ContentSyndication.xml'),
   ('zataz',     'ZATAZ',                 'press', 'fr', 'https://www.zataz.com/feed/'),
   ('lmi',       'Le Monde Informatique', 'press', 'fr', 'https://www.lemondeinformatique.fr/flux-rss/thematique/securite/rss.xml'),
-  ('rhc',       'Red Hot Cyber',         'press', 'it', 'https://www.redhotcyber.com/feed/'),
   ('cs360',     'Cybersecurity360',      'press', 'it', 'https://www.cybersecurity360.it/feed/'),
   ('heise',     'heise Security',        'press', 'de', 'https://www.heise.de/security/rss/news-atom.xml'),
   ('unaaldia',  'Una al día',            'press', 'es', 'https://unaaldia.hispasec.com/feed'),
   # Food & dairy trade press (incidents are often reported here first)
   ('fooddive',  'Food Dive',             'trade', 'en', 'https://www.fooddive.com/feeds/news/'),
   ('justfood',  'Just Food',             'trade', 'en', 'https://www.just-food.com/feed/'),
-  ('foodmfg',   'Food Manufacturing',    'trade', 'en', 'https://www.foodmanufacturing.com/rss'),
   ('dairyrep',  'DairyReporter',         'trade', 'en', 'https://www.dairyreporter.com/arc/outboundfeeds/rss/'),
   ('foodnav',   'FoodNavigator',         'trade', 'en', 'https://www.foodnavigator.com/arc/outboundfeeds/rss/'),
-  ('lsa',       'LSA Conso',             'trade', 'fr', 'https://www.lsa-conso.fr/rss'),
   # Government CERTs
   ('cisa',      'CISA advisories',       'gov',   'en', 'https://www.cisa.gov/cybersecurity-advisories/all.xml'),
   ('certfr',    'CERT-FR alertes',       'gov',   'fr', 'https://www.cert.ssi.gouv.fr/alerte/feed/'),
@@ -84,6 +81,11 @@ GNEWS = [
   ('gn_es', 'es', 'ES', '(ciberataque OR ransomware OR hackeo) (láctea OR lácteos OR leche OR alimentaria OR "empresa de alimentos")'),
   ('gn_mx', 'es', 'MX', '(ciberataque OR ransomware OR hackeo) (lácteos OR leche OR alimentos)'),
   ('gn_br', 'pt', 'BR', '("ataque hacker" OR ransomware OR "ataque cibernético") (laticínios OR leite OR alimentos OR frigorífico)'),
+  # site-restricted searches: trade titles and outlets whose own feeds block automated readers
+  ('gn_trade_en', 'en', 'US', '(cyberattack OR ransomware OR "cyber attack" OR "data breach" OR hackers) (site:foodmanufacturing.com OR site:foodprocessing.com OR site:dairyreporter.com OR site:just-food.com OR site:foodnavigator.com OR site:foodnavigator-usa.com OR site:fooddive.com OR site:supermarketnews.com OR site:dairyherd.com OR site:dairyfoods.com)'),
+  ('gn_trade_fr', 'fr', 'FR', '(cyberattaque OR rançongiciel OR ransomware OR piratage) (site:lsa-conso.fr OR site:processalimentaire.com OR site:rayon-boissons.com OR site:reussir.fr OR site:lafranceagricole.fr OR site:linfo-durable.fr OR site:agra.fr)'),
+  ('gn_cybernews', 'en', 'US', '(ransomware OR breach OR cyberattack OR hackers) site:cybernews.com'),
+  ('gn_rhc', 'it', 'IT', '(attacco OR ransomware OR "data breach" OR violazione) site:redhotcyber.com'),
   ('gn_de', 'de', 'DE', '(Cyberangriff OR Ransomware OR Hackerangriff) (Molkerei OR Käserei OR Lebensmittel OR Milch)'),
 ]
 SEC_QUERIES = [('"Item 1.05"', {'1.05'}), ('"cybersecurity incident"', {'1.05', '8.01'})]
@@ -235,9 +237,16 @@ def src_cw():
 def src_sec():
     out, start = [], (NOW - dt.timedelta(days=60)).strftime('%Y-%m-%d')
     for q, want in SEC_QUERIES:
-        u = 'https://efts.sec.gov/LATEST/search-index?' + urllib.parse.urlencode(
-            {'q': q, 'forms': '8-K,8-K/A', 'dateRange': 'custom', 'startdt': start, 'enddt': NOW.strftime('%Y-%m-%d')})
-        j = json.loads(fetch(u, headers={'Accept': 'application/json'}))
+        variants = [{'q': q, 'forms': '8-K', 'dateRange': 'custom', 'startdt': start, 'enddt': NOW.strftime('%Y-%m-%d')},
+                    {'q': q, 'forms': '8-K', 'startdt': start, 'enddt': NOW.strftime('%Y-%m-%d')},
+                    {'q': q, 'forms': '8-K'}]
+        j, last = None, None
+        for v in variants:
+            try:
+                j = json.loads(fetch('https://efts.sec.gov/LATEST/search-index?' + urllib.parse.urlencode(v), headers={'Accept': 'application/json'}, tries=1)); break
+            except Exception as e:
+                last = e; time.sleep(1)
+        if j is None: raise last
         for h in (j.get('hits') or {}).get('hits', []):
             s = h.get('_source') or {}
             items = set(s.get('items') or [])
