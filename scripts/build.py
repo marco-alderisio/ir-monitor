@@ -322,7 +322,9 @@ def main():
     for key, name, cat, lang, url in RSS:
         jobs[key] = (name, cat, (lambda k=key, n=name, c=cat, l=lang, u=url: news_items(k, n, c, l, u)))
     for key, lang, gl, q in GNEWS:
-        jobs[key] = (f'Google News — {lang.upper()}/{gl}', 'aggregator', (lambda k=key, l=lang, g=gl, q=q: news_items(k, 'Google News', 'aggregator', l, gnews_url(q, l, g), True)))
+        label = {'gn_indcyber': 'Industrial Cyber (via Google News)', 'gn_cybernews': 'Cybernews (via Google News)', 'gn_rhc': 'Red Hot Cyber (via Google News)',
+                 'gn_trade_en': 'Food & dairy trade press, EN (via Google News)', 'gn_trade_fr': 'Presse agroalimentaire, FR (via Google News)'}.get(key, f'Google News — {lang.upper()}/{gl}')
+        jobs[key] = (label, 'trade' if key.startswith('gn_trade') else 'press' if key in ('gn_indcyber', 'gn_cybernews', 'gn_rhc') else 'aggregator', (lambda k=key, l=lang, g=gl, q=q: news_items(k, 'Google News', 'aggregator', l, gnews_url(q, l, g), True)))
     status = {'sources': {}, 'built_utc': ''}
     def run(item):
         key, (name, cat, fn) = item
