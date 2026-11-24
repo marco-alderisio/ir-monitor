@@ -18,7 +18,7 @@ Industry tagging, relevance and country grouping are left to the consuming appli
 Environment variables (all optional)
   IR_OUT        output folder                          (default: site/data)
   IR_PREV       previous incidents.json to merge       (default: cache/incidents.json)
-  IR_KEEP_DAYS  history kept                           (default: 180)
+  IR_KEEP_DAYS  history kept                           (default: 1110, about 3 years)
   IR_UA         User-Agent; SEC EDGAR requires a contact e-mail in it
   RL_BASE       ransomware.live API base               (default: https://api.ransomware.live/v2)
   RL_HEADER     extra header for that API, "Name: value" (e.g. a personal api-pro token)
@@ -30,7 +30,7 @@ from concurrent.futures import ThreadPoolExecutor
 
 OUT = os.environ.get('IR_OUT') or 'site/data'
 PREV = os.environ.get('IR_PREV') or 'cache/incidents.json'
-KEEP_DAYS = int(os.environ.get('IR_KEEP_DAYS', '180'))
+KEEP_DAYS = int(os.environ.get('IR_KEEP_DAYS') or '1110')   # ~3 years, for 12/24/36-month trends
 UA = os.environ.get('IR_UA') or 'incident-collector/1.0 (contact: security@example.com)'
 RL_BASE = (os.environ.get('RL_BASE') or 'https://api.ransomware.live/v2').rstrip('/')
 RL_HEADER = os.environ.get('RL_HEADER', '')
@@ -318,7 +318,9 @@ def main():
             'pt': ('ransomware.live mirror (privtools, GitHub)', 'claims', src_pt),
             'tc': ('ThreatCluster Ransomware-Intel (GitHub)', 'claims', src_tc),
             'sec': ('SEC EDGAR — Form 8-K cyber disclosures', 'regulatory', src_sec)}
-    if not prev: jobs['pt_full'] = (f'ransomware.live history bootstrap, {KEEP_DAYS} days (privtools)', 'claims', src_pt_full)
+    oldest = min((x.get('t') or '9') for x in prev if x.get('type') == 'claim') if prev else ''
+    need_history = not prev or oldest[:10] > (NOW - dt.timedelta(days=KEEP_DAYS - 45)).strftime('%Y-%m-%d')
+    if need_history: jobs['pt_full'] = (f'ransomware.live history bootstrap, {KEEP_DAYS} days (privtools)', 'claims', src_pt_full)
     for key, name, cat, lang, url in RSS:
         jobs[key] = (name, cat, (lambda k=key, n=name, c=cat, l=lang, u=url: news_items(k, n, c, l, u)))
     for key, lang, gl, q in GNEWS:
