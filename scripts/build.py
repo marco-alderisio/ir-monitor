@@ -18,7 +18,7 @@ Industry tagging, relevance and country grouping are left to the consuming appli
 Environment variables (all optional)
   IR_OUT        output folder                          (default: site/data)
   IR_PREV       previous incidents.json to merge       (default: cache/incidents.json)
-  IR_KEEP_DAYS  history kept                           (default: 1110, about 3 years)
+  IR_KEEP_DAYS  history kept                           (default: 1840, about 5 years)
   IR_UA         User-Agent; SEC EDGAR requires a contact e-mail in it
   RL_BASE       ransomware.live API base               (default: https://api.ransomware.live/v2)
   RL_HEADER     extra header for that API, "Name: value" (e.g. a personal api-pro token)
@@ -30,7 +30,7 @@ from concurrent.futures import ThreadPoolExecutor
 
 OUT = os.environ.get('IR_OUT') or 'site/data'
 PREV = os.environ.get('IR_PREV') or 'cache/incidents.json'
-KEEP_DAYS = int(os.environ.get('IR_KEEP_DAYS') or '1110')   # ~3 years, for 12/24/36-month trends
+KEEP_DAYS = int(os.environ.get('IR_KEEP_DAYS') or '1840')   # ~5 years, for 1/2/3/5-year trends
 UA = os.environ.get('IR_UA') or 'incident-collector/1.0 (contact: security@example.com)'
 RL_BASE = (os.environ.get('RL_BASE') or 'https://api.ransomware.live/v2').rstrip('/')
 RL_HEADER = os.environ.get('RL_HEADER', '')
@@ -207,6 +207,12 @@ def src_pt_full():   # one-off history bootstrap when no previous data exists (~
     return [claim(x.get('post_title'), x.get('group_name'), x.get('discovered'), x.get('country'), x.get('activity'), _pt_site(x), '', '', 'pt')
             for x in data if str(x.get('discovered', ''))[:10] >= cut]
 
+def src_rw_archive():   # ransomwatch (J. Highet), frozen archive: covers the months before the ransomware.live mirror (2020-2021)
+    data = json.loads(fetch('https://raw.githubusercontent.com/joshhighet/ransomwatch/main/posts.json', timeout=120))
+    cut = (NOW - dt.timedelta(days=KEEP_DAYS)).strftime('%Y-%m-%d')
+    return [claim(x.get('post_title'), x.get('group_name'), x.get('discovered'), '', '', '', '', '', 'rw')
+            for x in data if cut <= str(x.get('discovered', ''))[:10] < '2022-01-01']
+
 def src_tc():   # ThreatCluster, independent first-hand collector
     data = json.loads(fetch('https://raw.githubusercontent.com/Jam0k/Ransomware-Intel/main/data/victims.json'))
     return [claim(x.get('victim'), x.get('group'), x.get('discovered'), x.get('country'), x.get('sector'), x.get('website'), '', '', 'tc')
@@ -322,6 +328,7 @@ def main():
     try: done = int(open(marker).read().strip() or 0)
     except Exception: done = 0
     need_history = not prev or done < KEEP_DAYS
+    if need_history: jobs['rw'] = ('ransomwatch archive, before 2022 (history bootstrap)', 'claims', src_rw_archive)
     if need_history: jobs['pt_full'] = (f'ransomware.live history bootstrap, {KEEP_DAYS} days (privtools)', 'claims', src_pt_full)
     for key, name, cat, lang, url in RSS:
         jobs[key] = (name, cat, (lambda k=key, n=name, c=cat, l=lang, u=url: news_items(k, n, c, l, u)))

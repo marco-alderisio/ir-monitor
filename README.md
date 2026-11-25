@@ -1,9 +1,9 @@
 # Incident source collector
 
-Collects public cyber-incident sources every 10 minutes with GitHub Actions and publishes one normalised
+Collects public cyber-incident sources every 15 minutes with GitHub Actions and publishes one normalised
 dataset on the `data` branch:
 
-- `https://raw.githubusercontent.com/<account>/<repo>/data/manifest.json` — list of monthly chunks (`chunks/m-YYYY-MM.json`, signals by event month, about 3 years) with a hash per chunk
+- `https://raw.githubusercontent.com/<account>/<repo>/data/manifest.json` — list of monthly chunks (`chunks/m-YYYY-MM.json`, signals by event month, about 5 years) with a hash per chunk
 - `https://raw.githubusercontent.com/<account>/<repo>/data/status.json` — per-source status of the last run
 
 Sources: leak-site claims (ransomware.live, ThreatCluster), press-reported cyberattacks (Cyberwatch,
