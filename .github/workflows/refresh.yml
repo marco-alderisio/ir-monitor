@@ -1,40 +1,98 @@
-# Collects public cyber-incident sources every 10 minutes and publishes the normalised data
+# Collects public cyber-incident sources every 15 minutes and publishes the normalised data
 # (manifest.json + monthly chunks, status.json) to the "data" branch. No web page is published from this repository.
+#
+# GitHub's own schedule is unreliable on small repositories (runs are delayed by hours or skipped), so the
+# collector keeps its own clock: one run collects every 15 minutes for about 5 h 30, then starts its successor.
+# The hourly schedule is only a watchdog that restarts the chain if it ever breaks.
+# A push or a manual run takes over from the running loop (the newest run wins).
 name: Collect sources
 on:
   schedule:
-    - cron: "*/10 * * * *"     # GitHub may delay scheduled runs at busy times
+    - cron: "23 * * * *"       # watchdog only; exits at once when a collector loop is already running
   workflow_dispatch:
   push:
     branches: [main]
 permissions:
   contents: write              # push to the data branch
-concurrency:
-  group: collect
-  cancel-in-progress: false
+  actions: write               # read the run list and start the next run of the chain
 jobs:
   collect:
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 350
+    env:
+      GH_TOKEN: ${{ github.token }}
+      WF: refresh.yml
     steps:
       - uses: actions/checkout@v4
+
+      - name: Take over from the running loop
+        id: guard
+        run: |
+          others() {   # ids of other active runs of this workflow
+            gh api "repos/${{ github.repository }}/actions/workflows/$WF/runs?per_page=30" \
+              --jq ".workflow_runs[] | select(.id != ${{ github.run_id }}) | select(.status==\"in_progress\" or .status==\"queued\" or .status==\"waiting\" or .status==\"pending\") | .id"
+          }
+          if [ "${{ github.event_name }}" = "schedule" ] && [ -n "$(others)" ]; then
+            echo "Collector loop already running: nothing to do."; echo "skip=1" >> "$GITHUB_OUTPUT"; exit 0
+          fi
+          # Wait (max 5 min) for an older loop to stop and save its history, so this run starts from the latest data
+          for i in $(seq 1 30); do
+            older=$(others | awk '$1 < ${{ github.run_id }}')
+            [ -z "$older" ] && break
+            echo "Waiting for run(s) $older to hand over…"; sleep 10
+          done
+          echo "skip=0" >> "$GITHUB_OUTPUT"
+
       - name: Restore history
-        uses: actions/cache@v4
+        if: steps.guard.outputs.skip == '0'
+        uses: actions/cache/restore@v4
         with:
           path: cache
           key: ir-cache-${{ github.run_id }}
           restore-keys: ir-cache-
-      - name: Collect
+
+      - name: Collect every 15 minutes
+        id: loop
+        if: steps.guard.outputs.skip == '0'
         env:
           IR_OUT: out
           IR_PREV: cache/incidents.json
           IR_UA: ${{ vars.IR_UA }}            # optional: "<name>/1.0 (contact: you@yourdomain)" — SEC EDGAR asks for a contact
           RL_BASE: ${{ vars.RL_BASE }}        # optional: ransomware.live API base
           RL_HEADER: ${{ secrets.RL_HEADER }} # optional: "Header-Name: token" for a ransomware.live token
-        run: python3 scripts/build.py
-      - name: Publish data branch
         run: |
-          cd out
-          git init -q -b data && git add manifest.json status.json chunks
-          git -c user.name="collector" -c user.email="actions@users.noreply.github.com" commit -q -m "data $(date -u +%FT%TZ)"
-          git push -q -f "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git" data
+          publish() {
+            rm -rf pub && mkdir pub && cp -r out/manifest.json out/status.json out/chunks pub/ && cd pub
+            git init -q -b data && git add manifest.json status.json chunks
+            git -c user.name="collector" -c user.email="actions@users.noreply.github.com" commit -q -m "data $(date -u +%FT%TZ)"
+            git push -q -f "https://x-access-token:${GH_TOKEN}@github.com/${{ github.repository }}.git" data
+            cd ..
+          }
+          newer() {    # a newer run of this workflow has started: hand over to it
+            gh api "repos/${{ github.repository }}/actions/workflows/$WF/runs?per_page=30" \
+              --jq ".workflow_runs[] | select(.id > ${{ github.run_id }}) | select(.status==\"in_progress\" or .status==\"queued\" or .status==\"waiting\" or .status==\"pending\") | .id" 2>/dev/null | head -1
+          }
+          END=$(( $(date +%s) + 330*60 ))      # about 5 h 30, inside the 6 h job limit
+          while :; do
+            T0=$(date +%s)
+            echo "::group::Collect $(date -u +%FT%TZ)"
+            if python3 scripts/build.py; then publish || echo "::warning::publish failed"; else echo "::warning::collect failed"; fi
+            echo "::endgroup::"
+            NEXT=$(( T0 + 900 ))
+            if [ "$NEXT" -ge "$END" ]; then echo "chain=1" >> "$GITHUB_OUTPUT"; break; fi
+            while [ "$(date +%s)" -lt "$NEXT" ]; do
+              if [ -n "$(newer)" ]; then echo "A newer run took over."; echo "chain=0" >> "$GITHUB_OUTPUT"; exit 0; fi
+              sleep 60
+            done
+          done
+
+      - name: Save history
+        if: always() && steps.guard.outputs.skip == '0'
+        uses: actions/cache/save@v4
+        with:
+          path: cache
+          key: ir-cache-${{ github.run_id }}
+
+      - name: Start the next run
+        if: steps.loop.outputs.chain == '1'
+        run: gh api -X POST "repos/${{ github.repository }}/actions/workflows/$WF/dispatches" -f ref="${{ github.ref_name }}"
