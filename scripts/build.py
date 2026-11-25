@@ -379,6 +379,11 @@ def main():
             if x.get('t') and (not o.get('t') or x['t'] < o['t']): o['t'] = x['t']
             if not any(y['k'] == s['k'] for y in o.get('srcs', [])): o.setdefault('srcs', []).append(s)
         if not o.get('url') and s.get('url'): o['url'] = s['url']
+    # History loaded in bulk (bootstraps, first run of a source) is not "news": a claim or reported attack first seen
+    # more than 45 days after its event date is dated by its event, so it does not flood the latest-detections view.
+    for x in byid.values():
+        if x.get('type') in ('claim', 'attack') and x.get('t') and x.get('seen') and x['seen'][:10] > (dt.datetime.fromisoformat(x['t'][:10]) + dt.timedelta(days=45)).strftime('%Y-%m-%d'):
+            x['seen'] = x['t']
     cut = (NOW - dt.timedelta(days=KEEP_DAYS)).strftime('%Y-%m-%d')
     allr = [x for x in byid.values() if (x.get('t') or x.get('seen', '')) >= cut]
     for x in allr:
