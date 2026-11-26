@@ -290,6 +290,10 @@ def parse_feed(raw):
                       'desc': e.findtext('a:summary', '', NS) or e.findtext('a:content', '', NS), 'pub': ''})
     return items
 
+# Sites that re-post older articles under a new date (aggregators / content farms). Their items are kept, flagged
+# "republished", and merged into the original story when the collector already has it.
+REPUBLISHERS = re.compile(r'shattered\.io|newsbreak|headtopics|ground\.news|flipboard|newsnow|muckrack|pressreader|newsbytesapp|inkl\b|zarabotai|bignewsnetwork|newsdzezimbabwe|latestly|devdiscourse|menafn', re.I)
+
 def news_items(key, name, cat, lang, url, gnews=False):
     out = []
     for x in parse_feed(fetch(url)):
@@ -303,8 +307,39 @@ def news_items(key, name, cat, lang, url, gnews=False):
         if cat != 'gov' and not INCIDENT_RE.search(title + ' ' + desc[:300]): continue
         out.append(rec(id=('g' if cat == 'gov' else 'n') + hid(norm(title)[:90]), type='advisory' if cat == 'gov' else 'news',
                        t=iso(x['date']) or NOW.strftime('%Y-%m-%dT%H:%M:%SZ'), title=title, summary=desc[:500],
-                       url=safe_url(x['link']), src=key, lang=lang, pub=pub))
+                       url=safe_url(x['link']), src=key, lang=lang, pub=pub, rep=1 if REPUBLISHERS.search(pub) else None))
     return out
+
+STOP = set('the a an of to in on at for and or by with from is are was were as after its it this that le la les de des du un une et en au aux par pour sur il lo gli i di da del della e al alla ai per con su el los las y que se der die das und von mit im ist nach'.split())
+STORY = {}   # token -> list of records
+
+def story_tokens(title):
+    w = [t for t in re.findall(r'[a-z0-9]+', html.unescape(title or '').lower().replace("'", ' ')) if len(t) > 2 and t not in STOP]
+    return set(w)
+
+def story_add(x):
+    tk = story_tokens(x.get('title'))
+    if len(tk) < 4: return
+    x['_tk'] = tk
+    for t in tk: STORY.setdefault(t, []).append(x)
+
+def same_story(x, byid):
+    """Return an existing record that reports the same story (near-identical headline within 60 days), or None."""
+    tk = story_tokens(x.get('title'))
+    if len(tk) < 4: return None
+    seen_ids, best, bs = set(), None, 0.0
+    t0 = x.get('t', '')[:10]
+    for t in tk:
+        for o in STORY.get(t, []):
+            if o['id'] in seen_ids or o['id'] == x['id']: continue
+            seen_ids.add(o['id'])
+            j = len(tk & o['_tk']) / len(tk | o['_tk'])
+            if j > bs: best, bs = o, j
+    if best is None or bs < 0.7: return None
+    try:
+        if abs((dt.date.fromisoformat(t0) - dt.date.fromisoformat(best.get('t', '')[:10])).days) > 60: return None
+    except Exception: pass
+    return best
 
 def gnews_url(q, lang, gl):
     return 'https://news.google.com/rss/search?' + urllib.parse.urlencode({'q': q + ' when:3d', 'hl': lang if lang != 'en' else f'en-{gl}', 'gl': gl, 'ceid': f'{gl}:{lang}'})
@@ -362,6 +397,11 @@ def main():
     if 'pt_full' in status['sources']:          # history bootstrap is the same source as the mirror: report it there
         h = status['sources'].pop('pt_full')
         if 'pt' in status['sources']: status['sources']['pt']['history_rows'] = h.get('rows', 0)
+    # story index for cross-outlet de-duplication (press and curated attacks, last 120 days)
+    STORY.clear()
+    lim = (NOW - dt.timedelta(days=120)).strftime('%Y-%m-%d')
+    for x in prev:
+        if x.get('type') in ('news', 'attack') and (x.get('t') or '') >= lim: story_add(x)
     # merge: earliest detection ("seen") is kept; sources are accumulated
     now_s = NOW.strftime('%Y-%m-%dT%H:%M:%SZ')
     byid = {x['id']: x for x in prev if x.get('id')}
@@ -369,10 +409,14 @@ def main():
         s = {'k': x.pop('src'), 't': x.get('t', '')}
         if x.get('url') and x['type'] != 'claim': s['url'] = x['url']
         if x.get('pub'): s['pub'] = x.pop('pub')
+        if x.pop('rep', None): s['rep'] = 1
         o = byid.get(x['id'])
+        if o is None and x['type'] in ('news', 'attack'):
+            o = same_story(x, byid)     # the same story already collected from another outlet: add this source to it
         if o is None:
             x['seen'] = now_s if prev else (x['t'] or now_s)   # first build: no detection history, use the event time
             x['srcs'] = [s]; x['src'] = s['k']; byid[x['id']] = o = x
+            if x['type'] in ('news', 'attack'): story_add(x)
         else:
             for f in ('country', 'sector', 'domain', 'summary', 'victim'):
                 if not o.get(f) and x.get(f): o[f] = x[f]
@@ -388,6 +432,7 @@ def main():
     allr = [x for x in byid.values() if (x.get('t') or x.get('seen', '')) >= cut]
     for x in allr:
         if x.get('victim') == x.get('title'): x.pop('victim')
+        x.pop('_tk', None)
         for f in [f for f, v in x.items() if v in ('', [], None)]: x.pop(f)
         if not x.get('t'): x['t'] = x.get('seen', now_s)
     allr.sort(key=lambda x: (x.get('seen', ''), x.get('t', '')), reverse=True)
