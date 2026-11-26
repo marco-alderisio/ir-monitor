@@ -68,6 +68,10 @@ RSS = [
   ('certfr',    'CERT-FR alertes',       'gov',   'fr', 'https://www.cert.ssi.gouv.fr/alerte/feed/'),
   ('certfr_a',  'CERT-FR actualité',     'gov',   'fr', 'https://www.cert.ssi.gouv.fr/actualite/feed/'),
   ('ncsc',      'NCSC UK',               'gov',   'en', 'https://www.ncsc.gov.uk/api/1/services/v1/all-rss-feed.xml'),
+  ('ccs',       'Canadian Centre for Cyber Security', 'gov', 'en', 'https://www.cyber.gc.ca/api/cccs/atom/v1/get?feed=alerts_advisories&lang=en'),
+  ('acn',       'CSIRT Italia (ACN)',    'gov',   'it', 'https://www.acn.gov.it/portale/feedrss/-/journal/rss/20119/723192'),
+  ('incibe',    'INCIBE-CERT (Spain)',   'gov',   'es', 'https://www.incibe.es/incibe-cert/alerta-temprana/avisos/feed'),
+  ('certpl',    'CERT Polska',           'gov',   'en', 'https://cert.pl/en/rss.xml'),
 ]
 # Google News searches: the fastest general aggregator. One query per language/edition.
 GNEWS = [
@@ -86,12 +90,26 @@ GNEWS = [
   ('gn_indcyber', 'en', 'US', '(cyberattack OR ransomware OR breach OR hackers OR attack OR OT OR ICS) site:industrialcyber.co'),
   ('gn_rhc', 'it', 'IT', '(attacco OR ransomware OR "data breach" OR violazione) site:redhotcyber.com'),
   ('gn_de', 'de', 'DE', '(Cyberangriff OR Ransomware OR Hackerangriff) (Molkerei OR Käserei OR Lebensmittel OR Milch)'),
+  # more Lactalis footprint countries, in their own language
+  ('gn_ca', 'en', 'CA', '(cyberattack OR ransomware OR "cyber attack" OR "data breach") (dairy OR cheese OR milk OR "food company" OR "food processor" OR grocery)'),
+  ('gn_cafr', 'fr', 'CA', '(cyberattaque OR rançongiciel OR ransomware OR "attaque informatique") (laitier OR fromagerie OR lait OR alimentaire OR épicerie)'),
+  ('gn_nl', 'nl', 'NL', '(cyberaanval OR ransomware OR hackers OR datalek) (zuivel OR kaas OR melk OR voedingsmiddelen OR levensmiddelen)'),
+  ('gn_pl', 'pl', 'PL', '(cyberatak OR ransomware OR "atak hakerski" OR wyciek) (mleczarnia OR mleko OR spożywcza OR żywność OR "spółdzielnia mleczarska")'),
+  ('gn_pt', 'pt', 'PT', '(ciberataque OR ransomware OR "ataque informático") (lacticínios OR leite OR alimentar OR queijo)'),
+  ('gn_ar', 'es', 'AR', '(ciberataque OR ransomware OR hackeo) (láctea OR lácteos OR leche OR alimentos OR alimenticia)'),
+  ('gn_co', 'es', 'CO', '(ciberataque OR ransomware OR hackeo) (lácteos OR leche OR alimentos OR alimenticia)'),
+  ('gn_cl', 'es', 'CL', '(ciberataque OR ransomware OR hackeo) (lácteos OR leche OR alimentos OR alimenticia)'),
+  ('gn_in', 'en', 'IN', '(cyberattack OR ransomware OR "data breach") (dairy OR milk OR "food company" OR FMCG)'),
+  ('gn_id', 'id', 'ID', '("serangan siber" OR ransomware OR peretasan OR "kebocoran data") (susu OR makanan OR "perusahaan makanan")'),
+  ('gn_tr', 'tr', 'TR', '("siber saldırı" OR "fidye yazılımı" OR ransomware OR hacker) (süt OR gıda OR peynir)'),
+  ('gn_ae', 'ar', 'AE', '("هجوم سيبراني" OR "برامج الفدية" OR اختراق) (ألبان OR حليب OR أغذية)'),
 ]
 SEC_QUERIES = [('"Item 1.05"', {'1.05'}), ('"cybersecurity incident"', {'1.05', '8.01'})]
 
 INCIDENT_RE = re.compile(r"ransom|cyber[\s-]?att?a(?:ck|que)|cyber[\s-]?incident|cyberangriff|hackerangriff|it-angriff|attacco (?:informatico|hacker)|ciberataque|ataque (?:hacker|cibern)|"
                          r"\bhack(?:ed|ers?|eo|ing)?\b|piratage|piraté|hacké|breach|data (?:leak|theft)|fuite de donn|violazione|brecha|vazamento|datenleck|extortion|extorsion|"
-                         r"stolen data|intrusion|compromis|malware|wiper|ddos|outage|systems? (?:down|offline)|shut ?down|disrupt|incident", re.I)
+                         r"stolen data|intrusion|compromis|malware|wiper|ddos|outage|systems? (?:down|offline)|shut ?down|disrupt|incident|"
+                         r"cyberaanval|datalek|cyberatak|atak hakersk|wyciek|ataque inform|serangan siber|peretasan|kebocoran data|siber saldır|fidye|هجوم سيبراني|اختراق|الفدية", re.I)
 
 def log(*a): print(*a, file=sys.stderr, flush=True)
 
@@ -271,6 +289,55 @@ def src_sec():
         time.sleep(0.5)
     return out
 
+# ---------------------------------------------------------------- RansomLook (second, independent leak-site tracker)
+def src_rlook():
+    data = json.loads(fetch('https://www.ransomlook.io/api/recent'))
+    return [claim(x.get('post_title'), x.get('group_name'), x.get('discovered'), '', '', '', x.get('description'),
+                  'https://www.ransomlook.io/group/' + urllib.parse.quote(str(x.get('group_name') or '')), 'rlook')
+            for x in data if str(x.get('private')).lower() != 'true']
+
+# ---------------------------------------------------------------- official breach notices
+def src_hibp():   # Have I Been Pwned: confirmed data breaches, dated when publicly listed
+    data = json.loads(fetch('https://haveibeenpwned.com/api/v3/breaches', timeout=90))
+    cut = (NOW - dt.timedelta(days=120)).strftime('%Y-%m-%d')
+    out = []
+    for x in data:
+        if str(x.get('AddedDate', ''))[:10] < cut or x.get('IsSpamList') or x.get('IsFabricated'): continue
+        name = text(x.get('Title') or x.get('Name'))
+        out.append(rec(id='h' + hid(str(x.get('Name'))), type='disclosure', t=iso(x.get('AddedDate')), title=f'{name} — data breach confirmed by Have I Been Pwned',
+                       victim=name, domain=domain_of(x.get('Domain') or ''),
+                       summary=f"Breach date {x.get('BreachDate', '?')}; {x.get('PwnCount', 0):,} accounts; data: {', '.join((x.get('DataClasses') or [])[:6])}. {text(x.get('Description'))}"[:600],
+                       url=f"https://haveibeenpwned.com/Breach/{urllib.parse.quote(str(x.get('Name')))}", src='hibp'))
+    return out
+
+def src_ca_ag():   # California Attorney General — data breach notifications (SB 24)
+    page = fetch('https://oag.ca.gov/privacy/databreach/list').decode('utf-8', 'replace')
+    out = []
+    for row in re.findall(r'<tr class="(?:odd|even)[^"]*">(.*?)</tr>', page, re.S):
+        m = re.search(r'<a href="([^"]+)">([^<]+)</a>', row)
+        cells = re.findall(r'<td[^>]*>(.*?)</td>', row, re.S)
+        if not m or len(cells) < 3: continue
+        url, name = m.group(1), text(m.group(2))
+        bd = ', '.join(re.findall(r'class="date-display-single">([^<]+)<', cells[1])) or '?'
+        rep = text(cells[2])
+        try: t = dt.datetime.strptime(rep, '%m/%d/%Y').strftime('%Y-%m-%dT12:00:00Z')
+        except Exception: continue
+        out.append(rec(id='s' + hid('ca-ag', url), type='disclosure', t=t, title=f'{name} — data breach notice (California Attorney General)', victim=name, country='US',
+                       summary=f'Breach date(s): {bd}. Notice filed with the California Attorney General on {rep}.', url=safe_url(url), src='ca_ag'))
+    return out
+
+def src_wa_ag():   # Washington State Attorney General — data breach notifications (open data)
+    data = json.loads(fetch('https://data.wa.gov/resource/sb4j-ca4h.json?' + urllib.parse.urlencode({'$limit': 200, '$order': 'datesubmitted DESC'})))
+    out = []
+    for x in data:
+        name = text(x.get('name'))
+        if not name or not x.get('datesubmitted'): continue
+        out.append(rec(id='s' + hid('wa-ag', str(x.get('id') or name + x['datesubmitted'])), type='disclosure', t=iso(x['datesubmitted']),
+                       title=f'{name} — data breach notice (Washington Attorney General)', victim=name, country='US', sector=text(x.get('businesstype') or x.get('industrytype')),
+                       summary=f"Cause: {x.get('databreachcause', '?')}. Washington residents affected: {x.get('washingtoniansaffected', '?')}. Breach known since {str(x.get('dateaware', '?'))[:10]}.",
+                       url='https://www.atg.wa.gov/data-breach-notifications', src='wa_ag'))
+    return out
+
 # ---------------------------------------------------------------- RSS / Atom
 NS = {'a': 'http://www.w3.org/2005/Atom', 'dc': 'http://purl.org/dc/elements/1.1/', 'c': 'http://purl.org/rss/1.0/modules/content/'}
 def parse_feed(raw):
@@ -358,7 +425,11 @@ def main():
             'cw': ('Cyberwatch — press-reported cyberattacks, curated (LeMagIT)', 'attacks', src_cw),
             'pt': ('ransomware.live mirror (privtools, GitHub)', 'claims', src_pt),
             'tc': ('ThreatCluster Ransomware-Intel (GitHub)', 'claims', src_tc),
-            'sec': ('SEC EDGAR — Form 8-K cyber disclosures', 'regulatory', src_sec)}
+            'sec': ('SEC EDGAR — Form 8-K cyber disclosures', 'regulatory', src_sec),
+            'rlook': ('RansomLook — leak-site claims (independent tracker)', 'claims', src_rlook),
+            'hibp': ('Have I Been Pwned — confirmed data breaches', 'regulatory', src_hibp),
+            'ca_ag': ('California Attorney General — breach notices', 'regulatory', src_ca_ag),
+            'wa_ag': ('Washington Attorney General — breach notices', 'regulatory', src_wa_ag)}
     marker = os.path.join(os.path.dirname(PREV) or '.', 'history.done')   # history backfilled once per retention setting
     try: done = int(open(marker).read().strip() or 0)
     except Exception: done = 0
