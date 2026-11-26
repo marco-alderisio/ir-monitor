@@ -1,7 +1,7 @@
 # Temporary: checks candidate sources from GitHub's network (removed after use)
 name: Probe sources
 on: workflow_dispatch
-permissions: { contents: read }
+permissions: { contents: write }
 jobs:
   probe:
     runs-on: ubuntu-latest
@@ -40,5 +40,6 @@ jobs:
                   res[k] = {'error': repr(e)[:300]}
           json.dump(res, open('summary.json', 'w'), indent=1)
           PY
-      - uses: actions/upload-artifact@v4
-        with: { name: probe, path: out }
+      - run: |
+          cd out && git init -q -b probe && git add . && git -c user.name=probe -c user.email=actions@users.noreply.github.com commit -q -m probe
+          git push -q -f "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git" probe
