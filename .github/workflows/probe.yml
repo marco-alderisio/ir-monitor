@@ -1,0 +1,44 @@
+# Temporary: checks candidate sources from GitHub's network (removed after use)
+name: Probe sources
+on: workflow_dispatch
+permissions: { contents: read }
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - run: |
+          mkdir out && cd out
+          python3 - <<'PY'
+          import urllib.request, json
+          U = {
+           'me_ag': 'https://www.maine.gov/agviewer/content/ag/985235c7-cb95-4be2-8792-a1252b4f8318/list.html',
+           'ca_ag': 'https://oag.ca.gov/privacy/databreach/list',
+           'wa_soc': 'https://data.wa.gov/resource/sb4j-ca4h.json?$limit=5&$order=datestart%20DESC',
+           'wa_ag': 'https://www.atg.wa.gov/data-breach-notifications',
+           'vt_ag': 'https://ago.vermont.gov/document-categories/security-breach-notices',
+           'hibp': 'https://haveibeenpwned.com/api/v3/breaches',
+           'rlook_recent': 'https://www.ransomlook.io/api/recent',
+           'rlook_last': 'https://www.ransomlook.io/api/last/2',
+           'ccs': 'https://www.cyber.gc.ca/api/cccs/rss/v1/get?feed=alerts_advisories&lang=en',
+           'ccs_news': 'https://www.cyber.gc.ca/api/cccs/rss/v1/get?feed=news&lang=en',
+           'certpl': 'https://cert.pl/en/feed/',
+           'certpl_pl': 'https://cert.pl/feed/',
+           'incibe': 'https://www.incibe.es/incibe-cert/alerta-temprana/avisos/feed',
+           'incibe2': 'https://www.incibe.es/feed/avisos-incibe-cert',
+           'acn': 'https://www.acn.gov.it/portale/feedrss/-/journal/rss/20119/723192',
+           'csirtit': 'https://www.csirt.gov.it/data/indexer/rss',
+           'acn2': 'https://www.acn.gov.it/portale/en/rss',
+          }
+          res = {}
+          for k, u in U.items():
+              try:
+                  r = urllib.request.urlopen(urllib.request.Request(u, headers={'User-Agent': 'ir-monitor/1.0 (+https://github.com/marco-alderisio/ir-monitor)', 'Accept': '*/*'}), timeout=40)
+                  b = r.read(); res[k] = {'status': r.status, 'type': r.headers.get('content-type'), 'len': len(b), 'url': r.geturl()}
+                  open(k + '.txt', 'wb').write(b[:400000])
+              except Exception as e:
+                  res[k] = {'error': repr(e)[:300]}
+          json.dump(res, open('summary.json', 'w'), indent=1)
+          PY
+      - uses: actions/upload-artifact@v4
+        with: { name: probe, path: out }
