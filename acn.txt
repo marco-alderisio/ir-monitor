@@ -1,0 +1,460 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss xmlns:dc="http://purl.org/dc/elements/1.1/" version="2.0">
+  <channel>
+    <title>RSS Csirt Italia</title>
+    <link>https://www.acn.gov.it/portale/feedrss/-/journal/rss/20119/723192</link>
+    <description />
+    <pubDate>Thu, 26 Nov 2026 08:48:16 GMT</pubDate>
+    <dc:date>2026-11-26T08:48:16Z</dc:date>
+    <item>
+      <title>Vates: rilevato sfruttamento in rete di vulnerabilità in Xen Orchestra</title>
+      <link>https://www.acn.gov.it/portale/w/vates-rilevato-sfruttamento-in-rete-di-vulnerabilita-in-xen-orchestra</link>
+      <description>Vates ha rilevato lo sfruttamento in rete di vulnerabilità che interessano Xen Orchestra e Xen Orchestra Appliance, soluzioni per la gestione centralizzata di infrastrutture di virtualizzazione basate su XCP-ng e Xen. Tali vulnerabilità potrebbero consentire a un attaccante remoto non autenticato di eludere i meccanismi di autenticazione e sicurezza, acquisire privilegi amministrativi ed eseguire codice arbitrario sui sistemi interessati.</description>
+      <pubDate>Thu, 12 Nov 2026 15:15:11 GMT</pubDate>
+      <guid isPermaLink="false">https://www.acn.gov.it/portale/w/vates-rilevato-sfruttamento-in-rete-di-vulnerabilita-in-xen-orchestra</guid>
+      
+      <dc:date>2026-11-12T15:15:11Z</dc:date>
+    </item>
+    <item>
+      <title>Risolte vulnerabilità in GeoServer</title>
+      <link>https://www.acn.gov.it/portale/w/risolte-vulnerabilita-in-geoserver</link>
+      <description>Aggiornamenti di sicurezza sanano numerose vulnerabilità, di cui una con gravità "critica" e 13 con gravità "alta", in GeoServer, nota piattaforma open source per la gestione e pubblicazione web di dati geografici e cartografici. Tali vulnerabilità potrebbero permettere a un attaccante remoto di eludere i meccanismi di sicurezza e autenticazione, accedere a file e informazioni sensibili, manipolare i dati, elevare i propri privilegi ed eseguire codice arbitrario sui sistemi interessati.</description>
+      <pubDate>Tue, 24 Nov 2026 09:09:11 GMT</pubDate>
+      <guid isPermaLink="false">https://www.acn.gov.it/portale/w/risolte-vulnerabilita-in-geoserver</guid>
+      
+      <dc:date>2026-11-24T09:09:11Z</dc:date>
+    </item>
+    <item>
+      <title>Supply Chain Attack: distribuzione di codice malevolo tramite Optimizely Web Experimentation</title>
+      <link>https://www.acn.gov.it/portale/w/supply-chain-attack-distribuzione-di-codice-malevolo-tramite-optimizely-web-experimentation</link>
+      <description>È stata rilevata una campagna di compromissione della supply chain che ha interessato numerosi progetti dei clienti della piattaforma Optimizely Web Experimentation, utilizzata da molteplici organizzazioni per attività di A/B testing e personalizzazione dei contenuti. Secondo le analisi pubblicate da ricercatori di Report URI, il 16 novembre 2026 codice JavaScript malevolo è stato distribuito ai visitatori di almeno 178 organizzazioni attraverso snippet caricati dal CDN ufficiale di Optimizely.</description>
+      <pubDate>Wed, 18 Nov 2026 08:38:38 GMT</pubDate>
+      <guid isPermaLink="false">https://www.acn.gov.it/portale/w/supply-chain-attack-distribuzione-di-codice-malevolo-tramite-optimizely-web-experimentation</guid>
+      
+      <dc:date>2026-11-18T08:38:38Z</dc:date>
+    </item>
+    <item>
+      <title>Rilevate vulnerabilità in prodotti Dell</title>
+      <link>https://www.acn.gov.it/portale/w/rilevate-vulnerabilita-in-prodotti-dell-4</link>
+      <description>Dell ha rilasciato aggiornamenti di sicurezza per sanare numerose vulnerabilità, di cui 2 con gravità "critica" e 9 con gravità “alta”, in Enterprise SONiC Distribution e VSI (Virtual Storage Integrator) for VMware vSphere Web Client.</description>
+      <pubDate>Wed, 25 Nov 2026 14:31:55 GMT</pubDate>
+      <guid isPermaLink="false">https://www.acn.gov.it/portale/w/rilevate-vulnerabilita-in-prodotti-dell-4</guid>
+      
+      <dc:date>2026-11-25T14:31:55Z</dc:date>
+    </item>
+    <item>
+      <title>Risolte vulnerabilità nei componenti di Symfony</title>
+      <link>https://www.acn.gov.it/portale/w/risolte-vulnerabilita-nei-componenti-di-symfony</link>
+      <description>Aggiornamenti di sicurezza risolvono 23 nuove vulnerabilità, tra cui 6 con gravità “alta”, nei componenti HTTP Kernel, HTTP Client, Expression Language e Serializer di Symfony. Tali vulnerabilità, qualora sfruttate con successo, potrebbero consentire ad un utente malintenzionato di eludere meccanismi di sicurezza, accedere ad informazioni sensibili, alterare contenuti applicativi generati dal sistema o compromettere la disponibilità dei sistemi interessati.</description>
+      <pubDate>Wed, 25 Nov 2026 14:25:55 GMT</pubDate>
+      <guid isPermaLink="false">https://www.acn.gov.it/portale/w/risolte-vulnerabilita-nei-componenti-di-symfony</guid>
+      
+      <dc:date>2026-11-25T14:25:55Z</dc:date>
+    </item>
+    <item>
+      <title>Rilevate vulnerabilità in prodotti Dell</title>
+      <link>https://www.acn.gov.it/portale/w/rilevate-vulnerabilita-in-prodotti-dell-3</link>
+      <description>Dell ha rilasciato aggiornamenti di sicurezza per sanare numerose vulnerabilità, di cui 12 con gravità "critica" e 24 con gravità “alta”, in PowerStoreT OS, Dell Networking OS10 e PowerScale InsightIQ.</description>
+      <pubDate>Fri, 13 Nov 2026 16:53:54 GMT</pubDate>
+      <guid isPermaLink="false">https://www.acn.gov.it/portale/w/rilevate-vulnerabilita-in-prodotti-dell-3</guid>
+      
+      <dc:date>2026-11-13T16:53:54Z</dc:date>
+    </item>
+    <item>
+      <title>Risolte vulnerabilità in Joomla!</title>
+      <link>https://www.acn.gov.it/portale/w/risolte-vulnerabilita-in-joomla-1</link>
+      <description>Aggiornamenti di sicurezza sanano molteplici vulnerabilità, di cui 4 con gravità "critica" e 23 con gravità "alta", nel noto CMS Joomla!.</description>
+      <pubDate>Wed, 25 Nov 2026 12:35:32 GMT</pubDate>
+      <guid isPermaLink="false">https://www.acn.gov.it/portale/w/risolte-vulnerabilita-in-joomla-1</guid>
+      
+      <dc:date>2026-11-25T12:35:32Z</dc:date>
+    </item>
+    <item>
+      <title>Risolte vulnerabilità in Parallels Desktop</title>
+      <link>https://www.acn.gov.it/portale/w/risolte-vulnerabilita-in-parallels-desktop</link>
+      <description>Parallels ha risolto alcune vulnerabilità, di cui 2 con gravità "alta", in Parallels Desktop, soluzione di virtualizzazione per macOS per l’esecuzione e la gestione di macchine virtuali. Tali vulnerabilità potrebbero permettere a un attaccante locale con privilegi limitati di elevare i propri privilegi ed eseguire codice arbitrario nel contesto del sistema host o dell'hypervisor.</description>
+      <pubDate>Wed, 25 Nov 2026 11:36:37 GMT</pubDate>
+      <guid isPermaLink="false">https://www.acn.gov.it/portale/w/risolte-vulnerabilita-in-parallels-desktop</guid>
+      
+      <dc:date>2026-11-25T11:36:37Z</dc:date>
+    </item>
+    <item>
+      <title>Vulnerabilità in prodotti Copeland XWEB PRO</title>
+      <link>https://www.acn.gov.it/portale/w/vulnerabilita-in-prodotti-copeland-xweb-pro</link>
+      <description>Rilevate 4 nuove vulnerabilità, di cui 3 con gravità “critica”, nei prodotti Copeland XWEB PRO, nota piattaforma web utilizzata per la supervisione e la gestione di impianti di refrigerazione commerciale e sistemi HVAC. Tali vulnerabilità, qualora sfruttate, potrebbero consentire a un utente malintenzionato remoto di eludere i meccanismi di autenticazione o eseguire codice arbitrario sui sistemi interessati.</description>
+      <pubDate>Wed, 25 Nov 2026 11:32:17 GMT</pubDate>
+      <guid isPermaLink="false">https://www.acn.gov.it/portale/w/vulnerabilita-in-prodotti-copeland-xweb-pro</guid>
+      
+      <dc:date>2026-11-25T11:32:17Z</dc:date>
+    </item>
+    <item>
+      <title>Vulnerabilità in prodotti VMware</title>
+      <link>https://www.acn.gov.it/portale/w/vulnerabilita-in-prodotti-vmware-9</link>
+      <description>VMware ha rilasciato aggiornamenti di sicurezza per sanare 23 vulnerabilità, di cui 4 con gravità “critica” e 5 con gravità “alta” in ESX, vCenter, Workstation e Fusion. Tra queste si evidenza la CVE-2026-123903 per la quale risulta disponibile un Proof of Concept (PoC) in rete.</description>
+      <pubDate>Wed, 25 Nov 2026 10:14:32 GMT</pubDate>
+      <guid isPermaLink="false">https://www.acn.gov.it/portale/w/vulnerabilita-in-prodotti-vmware-9</guid>
+      
+      <dc:date>2026-11-25T10:14:32Z</dc:date>
+    </item>
+    <item>
+      <title>Rilevate vulnerabilità in Erlang/OTP</title>
+      <link>https://www.acn.gov.it/portale/w/rilevate-vulnerabilita-in-erlang/otp-6</link>
+      <description>Rilevate 10 nuove vulnerabilità, di cui una con gravità "critica" e 3 con gravità "alta", in Erlang/OTP, piattaforma open source basata sul linguaggio Erlang e sul relativo set di librerie OTP, utilizzata per lo sviluppo di sistemi distribuiti ad alta disponibilità.</description>
+      <pubDate>Wed, 25 Nov 2026 09:03:35 GMT</pubDate>
+      <guid isPermaLink="false">https://www.acn.gov.it/portale/w/rilevate-vulnerabilita-in-erlang/otp-6</guid>
+      
+      <dc:date>2026-11-25T09:03:35Z</dc:date>
+    </item>
+    <item>
+      <title>Risolte vulnerabilità in SolarWinds Serv-U</title>
+      <link>https://www.acn.gov.it/portale/w/risolte-vulnerabilita-in-solarwinds-serv-u</link>
+      <description>SolarWinds ha rilasciato aggiornamenti di sicurezza che sanano molteplici vulnerabilità, di cui 9 con gravità "critica" e 2 con gravità "alta", in Serv-U, soluzione per il trasferimento gestito e sicuro di file. Tali vulnerabilità potrebbero consentire a un attaccante di eludere i meccanismi di sicurezza, elevare i propri privilegi fino a livelli amministrativi ed eseguire codice arbitrario sui sistemi interessati.</description>
+      <pubDate>Wed, 25 Nov 2026 09:03:55 GMT</pubDate>
+      <guid isPermaLink="false">https://www.acn.gov.it/portale/w/risolte-vulnerabilita-in-solarwinds-serv-u</guid>
+      
+      <dc:date>2026-11-25T09:03:55Z</dc:date>
+    </item>
+    <item>
+      <title>Rilevate vulnerabilità in Drupal</title>
+      <link>https://www.acn.gov.it/portale/w/rilevate-vulnerabilita-in-drupal-1</link>
+      <description>Rilevate 2 vulnerabilità in Drupal, noto Content Management System (CMS) open source. Tali vulnerabilità, qualora sfruttate, potrebbero consentire a un utente malintenzionato remoto di eseguire codice arbitrario sui sistemi interessati. Tra queste si evidenzia la CVE-2026-132165, per la quale è stato rilevato lo sfruttamento attivo in rete.</description>
+      <pubDate>Thu, 19 Nov 2026 10:30:01 GMT</pubDate>
+      <guid isPermaLink="false">https://www.acn.gov.it/portale/w/rilevate-vulnerabilita-in-drupal-1</guid>
+      
+      <dc:date>2026-11-19T10:30:01Z</dc:date>
+    </item>
+    <item>
+      <title>Risolte vulnerabilità in prodotti Mozilla</title>
+      <link>https://www.acn.gov.it/portale/w/risolte-vulnerabilita-in-prodotti-mozilla-16</link>
+      <description>Aggiornamenti di sicurezza sanano numerose vulnerabilità di sicurezza, di cui una con gravità “critica” e 64 con gravità “alta”, nei prodotti Firefox, Firefox ESR e Thunderbird.</description>
+      <pubDate>Wed, 25 Nov 2026 08:03:24 GMT</pubDate>
+      <guid isPermaLink="false">https://www.acn.gov.it/portale/w/risolte-vulnerabilita-in-prodotti-mozilla-16</guid>
+      
+      <dc:date>2026-11-25T08:03:24Z</dc:date>
+    </item>
+    <item>
+      <title>Adobe: aggiornamenti di sicurezza</title>
+      <link>https://www.acn.gov.it/portale/w/adobe-aggiornamenti-di-sicurezza-28</link>
+      <description>Adobe ha rilasciato aggiornamenti di sicurezza per risolvere 113 vulnerabilità, di cui 15 con gravità “critica” e 4 con gravità “alta” nei prodotti Experience Manager e Campaign Classic.</description>
+      <pubDate>Wed, 25 Nov 2026 07:55:58 GMT</pubDate>
+      <guid isPermaLink="false">https://www.acn.gov.it/portale/w/adobe-aggiornamenti-di-sicurezza-28</guid>
+      
+      <dc:date>2026-11-25T07:55:58Z</dc:date>
+    </item>
+    <item>
+      <title>Node.js: rilevate vulnerabilità</title>
+      <link>https://www.acn.gov.it/portale/w/node.js-rilevate-vulnerabilita</link>
+      <description>Rilevate molteplici vulnerabilità, di cui 7 con gravità “alta”, in Node.js, noto software open source per l’esecuzione di codice JavaScript. Tali vulnerabilità potrebbero consentire a un attaccante remoto non autenticato di eludere i meccanismi di sicurezza e di autenticazione, compromettere la disponibilità del servizio, accedere ad informazioni sensibili e, nei casi più gravi, eseguire codice arbitrario sui sistemi interessati.</description>
+      <pubDate>Thu, 12 Nov 2026 12:53:00 GMT</pubDate>
+      <guid isPermaLink="false">https://www.acn.gov.it/portale/w/node.js-rilevate-vulnerabilita</guid>
+      
+      <dc:date>2026-11-12T12:53:00Z</dc:date>
+    </item>
+    <item>
+      <title>Rilevato sfruttamento attivo in rete della CVE-2026-131914</title>
+      <link>https://www.acn.gov.it/portale/w/rilevato-sfruttamento-attivo-in-rete-della-cve-2026-131914</link>
+      <description>Rilevato lo sfruttamento attivo in rete della vulnerabilità identificata tramite la CVE-2026-131914, con gravità "critica", che interessa Idunno AntiCsrf, libreria ASP.NET per la protezione delle applicazioni web da attacchi di tipo Cross-Site Request Forgery (CSRF). Tale vulnerabilità, qualora sfruttata, potrebbe consentire ad un attaccante remoto non autenticato di iniettare codice arbitrario ed eseguire comandi sul sistema interessato.</description>
+      <pubDate>Tue, 24 Nov 2026 15:25:30 GMT</pubDate>
+      <guid isPermaLink="false">https://www.acn.gov.it/portale/w/rilevato-sfruttamento-attivo-in-rete-della-cve-2026-131914</guid>
+      
+      <dc:date>2026-11-24T15:25:30Z</dc:date>
+    </item>
+    <item>
+      <title>N-able: risolta una vulnerabilità in MailAssure</title>
+      <link>https://www.acn.gov.it/portale/w/n-able-risolta-una-vulnerabilita-in-mailassure</link>
+      <description>N-able ha rilasciato aggiornamenti di sicurezza al fine di risolvere una vulnerabilità con gravità "critica" in MailAssure, soluzione cloud per la sicurezza della posta elettronica.</description>
+      <pubDate>Mon, 23 Nov 2026 11:25:52 GMT</pubDate>
+      <guid isPermaLink="false">https://www.acn.gov.it/portale/w/n-able-risolta-una-vulnerabilita-in-mailassure</guid>
+      
+      <dc:date>2026-11-23T11:25:52Z</dc:date>
+    </item>
+    <item>
+      <title>Upload2Shell: disponibile PoC per lo sfruttamento dalla CVE-2026-125396 in Ghostscript</title>
+      <link>https://www.acn.gov.it/portale/w/upload2shell-disponibile-poc-per-lo-sfruttamento-dalla-cve-2026-125396-in-ghostscript</link>
+      <description>Disponibile Proof of Concept (PoC) per lo sfruttamento della vulnerabilità identificata dalla CVE-2026-125396 - già sanata dal vendor - denominata "Upload2Shell", che interessa il prodotto Ghostscript, interprete open source per i linguaggi PostScript e PDF per visualizzare, elaborare, convertire e stampare documenti. Tale vulnerabilità, qualora sfruttata, consentirebbe a un attaccante di eseguire codice arbitrario sui sistemi interessati.</description>
+      <pubDate>Tue, 24 Nov 2026 13:00:11 GMT</pubDate>
+      <guid isPermaLink="false">https://www.acn.gov.it/portale/w/upload2shell-disponibile-poc-per-lo-sfruttamento-dalla-cve-2026-125396-in-ghostscript</guid>
+      
+      <dc:date>2026-11-24T13:00:11Z</dc:date>
+    </item>
+    <item>
+      <title>Supply Chain Attack: installer malevolo di NoMachine Personal Edition per Windows distribuito attraverso il server ufficiale di download</title>
+      <link>https://www.acn.gov.it/portale/w/supply-chain-attack-installer-malevolo-di-nomachine-personal-edition-per-windows-distribuito-attraverso-il-server-ufficiale-di-download</link>
+      <description>Il team di sicurezza di NoMachine ha segnalato la compromissione di un proprio server di distribuzione utilizzato per il download di NoMachine Personal Edition per Windows. Tra il 19 novembre 2026 alle 13:43 UTC e il 20 novembre 2026 alle 10:00 UTC, il pacchetto di installazione nomachine-personal-edition_10.2.3_1_x64.exe è stato alterato da attori malevoli e distribuito con codice dannoso incorporato.</description>
+      <pubDate>Tue, 24 Nov 2026 11:16:31 GMT</pubDate>
+      <guid isPermaLink="false">https://www.acn.gov.it/portale/w/supply-chain-attack-installer-malevolo-di-nomachine-personal-edition-per-windows-distribuito-attraverso-il-server-ufficiale-di-download</guid>
+      
+      <dc:date>2026-11-24T11:16:31Z</dc:date>
+    </item>
+    <item>
+      <title>Rilevata vulnerabilità in Check Point ZoneAlarm</title>
+      <link>https://www.acn.gov.it/portale/w/rilevata-vulnerabilita-in-check-point-zonealarm</link>
+      <description>Rilevata una vulnerabilità con gravità “alta” nel prodotto Check Point ZoneAlarm. Tale vulnerabilità, qualora sfruttata, potrebbe consentire a utenti malintenzionati locali di ottenere privilegi elevati sui sistemi interessati.</description>
+      <pubDate>Tue, 24 Nov 2026 10:49:44 GMT</pubDate>
+      <guid isPermaLink="false">https://www.acn.gov.it/portale/w/rilevata-vulnerabilita-in-check-point-zonealarm</guid>
+      
+      <dc:date>2026-11-24T10:49:44Z</dc:date>
+    </item>
+    <item>
+      <title>Risolte vulnerabilità in prodotti Elastic</title>
+      <link>https://www.acn.gov.it/portale/w/risolte-vulnerabilita-in-prodotti-elastic-5</link>
+      <description>Elastic ha rilasciato aggiornamenti di sicurezza per sanare 18 vulnerabilità, di cui una con gravità “alta” che interessa Elasticsearch. Tale vulnerabilità, qualora sfruttata, potrebbe consentire a un utente malintenzionato remoto non autenticato di accedere a informazioni sensibili sui sistemi interessati.</description>
+      <pubDate>Tue, 24 Nov 2026 10:12:41 GMT</pubDate>
+      <guid isPermaLink="false">https://www.acn.gov.it/portale/w/risolte-vulnerabilita-in-prodotti-elastic-5</guid>
+      
+      <dc:date>2026-11-24T10:12:41Z</dc:date>
+    </item>
+    <item>
+      <title>Risolte vulnerabilità in n8n</title>
+      <link>https://www.acn.gov.it/portale/w/risolte-vulnerabilita-in-n8n-1</link>
+      <description>Aggiornamenti di sicurezza sanano alcune vulnerabilità, di cui 2 con gravità "alta", in n8n, piattaforma open‑source di workflow automation che consente di integrare applicazioni, servizi e API tramite flussi visuali. Tali vulnerabilità potrebbero consentire a un attaccante di eludere i meccanismi di autenticazione o elevare i propri privilegi sui sistemi interessati.</description>
+      <pubDate>Tue, 24 Nov 2026 10:07:25 GMT</pubDate>
+      <guid isPermaLink="false">https://www.acn.gov.it/portale/w/risolte-vulnerabilita-in-n8n-1</guid>
+      
+      <dc:date>2026-11-24T10:07:25Z</dc:date>
+    </item>
+    <item>
+      <title>Accessi non autorizzati a dispositivi GL.iNet connessi a GoodCloud</title>
+      <link>https://www.acn.gov.it/portale/w/accessi-non-autorizzati-a-dispositivi-gl.inet-connessi-a-goodcloud</link>
+      <description>GL.iNet ha comunicato che un soggetto non autorizzato ha sfruttato una vulnerabilità di GoodCloud, il servizio cloud di gestione remota, per accedere e installare software dannoso su alcuni router e dispositivi KVM collegati al servizio. Il vendor ha bloccato il vettore di attacco il 20 novembre 2026 e ha pubblicato firmware di sicurezza in grado di disabilitare il malware noto associato all'incidente.</description>
+      <pubDate>Tue, 24 Nov 2026 10:02:56 GMT</pubDate>
+      <guid isPermaLink="false">https://www.acn.gov.it/portale/w/accessi-non-autorizzati-a-dispositivi-gl.inet-connessi-a-goodcloud</guid>
+      
+      <dc:date>2026-11-24T10:02:56Z</dc:date>
+    </item>
+    <item>
+      <title>Risolta vulnerabilità in Google Chrome</title>
+      <link>https://www.acn.gov.it/portale/w/risolta-vulnerabilita-in-google-chrome-7</link>
+      <description>Google ha rilasciato un aggiornamento per il browser Chrome al fine di correggere una nuova vulnerabilità di sicurezza con gravità “critica”. Tale vulnerabilità, qualora sfruttata, potrebbe permettere a un attaccante remoto di eseguire codice arbitrario sui sistemi interessati.</description>
+      <pubDate>Tue, 24 Nov 2026 07:45:24 GMT</pubDate>
+      <guid isPermaLink="false">https://www.acn.gov.it/portale/w/risolta-vulnerabilita-in-google-chrome-7</guid>
+      
+      <dc:date>2026-11-24T07:45:24Z</dc:date>
+    </item>
+    <item>
+      <title>Impiego di agenti di IA in campagne di compromissione automatizzate</title>
+      <link>https://www.acn.gov.it/portale/w/impiego-di-agenti-di-ia-in-campagne-di-compromissione-automatizzate</link>
+      <description>Lo CSIRT Italia ha rilevato, nel contesto nazionale, campagne di compromissione massiva condotte mediante agenti autonomi orchestrati tramite intelligenza artificiale. L’impiego di tale tecnologia consente di estendere la portata e la frequenza delle azioni offensive contro le infrastrutture connesse, elevando drasticamente il livello di rischio per i sistemi esposti e riducendo il tempo a disposizione delle organizzazioni per individuare e correggere vulnerabilità e errori di configurazione pri</description>
+      <pubDate>Mon, 23 Nov 2026 20:45:58 GMT</pubDate>
+      <guid isPermaLink="false">https://www.acn.gov.it/portale/w/impiego-di-agenti-di-ia-in-campagne-di-compromissione-automatizzate</guid>
+      
+      <dc:date>2026-11-23T20:45:58Z</dc:date>
+    </item>
+    <item>
+      <title>Rilevata nuova vulnerabilità in GPGME</title>
+      <link>https://www.acn.gov.it/portale/w/rilevata-nuova-vulnerabilita-in-gpgme</link>
+      <description>GnuPG ha rilasciato aggiornamenti di sicurezza che sanano una vulnerabilità con gravità "critica" in GPGME, libreria open source per integrare le operazioni crittografiche basate su GnuPG nelle applicazioni software. Tale vulnerabilità, qualora sfruttata, potrebbe permettere a un utente malintenzionato remoto di eseguire codice arbitrario sui sistemi interessati.</description>
+      <pubDate>Mon, 23 Nov 2026 14:30:11 GMT</pubDate>
+      <guid isPermaLink="false">https://www.acn.gov.it/portale/w/rilevata-nuova-vulnerabilita-in-gpgme</guid>
+      
+      <dc:date>2026-11-23T14:30:11Z</dc:date>
+    </item>
+    <item>
+      <title>Rilevate vulnerabilità in Portainer</title>
+      <link>https://www.acn.gov.it/portale/w/rilevate-vulnerabilita-in-portainer-1</link>
+      <description>Rilevate due vulnerabilità di sicurezza, di cui una con gravità “alta”, in Portainer, nota piattaforma open-source per la gestione di ambienti containerizzati. Tale vulnerabilità, qualora sfruttata, potrebbe consentire a un utente malevolo autenticato di eludere dei meccanismi di sicurezza, accedere ad informazioni riservate ed elevare i propri privilegi sui sistemi interessati.</description>
+      <pubDate>Mon, 23 Nov 2026 13:55:25 GMT</pubDate>
+      <guid isPermaLink="false">https://www.acn.gov.it/portale/w/rilevate-vulnerabilita-in-portainer-1</guid>
+      
+      <dc:date>2026-11-23T13:55:25Z</dc:date>
+    </item>
+    <item>
+      <title>Risolte vulnerabilità in prodotti WatchGuard</title>
+      <link>https://www.acn.gov.it/portale/w/risolte-vulnerabilita-in-prodotti-watchguard-5</link>
+      <description>WatchGuard ha rilasciato aggiornamenti di sicurezza per sanare molteplici vulnerabilità, di cui 3 con gravità “critica” e 10 con gravità “alta”, nel prodotto Dimension. Tali vulnerabilità potrebbero consentire a un attaccante remoto, in alcuni casi non autenticato, di eludere i meccanismi di autorizzazione, elevare i propri privilegi, accedere a informazioni sensibili, scrivere file arbitrari, impersonare entità legittime o eseguire codice arbitrario sui sistemi interessati.</description>
+      <pubDate>Mon, 23 Nov 2026 11:31:30 GMT</pubDate>
+      <guid isPermaLink="false">https://www.acn.gov.it/portale/w/risolte-vulnerabilita-in-prodotti-watchguard-5</guid>
+      
+      <dc:date>2026-11-23T11:31:30Z</dc:date>
+    </item>
+    <item>
+      <title>Rclone: disponibili PoC per numerose vulnerabilità</title>
+      <link>https://www.acn.gov.it/portale/w/rclone-disponibili-poc-per-numerose-vulnerabilita-1</link>
+      <description>Disponibili Proof of Concept (PoC) per lo sfruttamento di 6 vulnerabilità - già sanate dal vendor - presenti in Rclone, software open source per la sincronizzazione e il trasferimento di file verso servizi di archiviazione remota e cloud.</description>
+      <pubDate>Mon, 23 Nov 2026 11:05:57 GMT</pubDate>
+      <guid isPermaLink="false">https://www.acn.gov.it/portale/w/rclone-disponibili-poc-per-numerose-vulnerabilita-1</guid>
+      
+      <dc:date>2026-11-23T11:05:57Z</dc:date>
+    </item>
+    <item>
+      <title>WhatsApp: rilevato sfruttamento in rete della vulnerabilità CVE-2026-23871</title>
+      <link>https://www.acn.gov.it/portale/w/whatsapp-rilevato-sfruttamento-in-rete-della-vulnerabilita-cve-2026-23871</link>
+      <description>Meta ha rilasciato aggiornamenti di sicurezza per risolvere 3 vulnerabilità che interessano WhatsApp per Android e WhatsApp Business per Android, note piattaforme di instant messaging. Tra queste si evidenzia la CVE-2026-23871, per la quale è stato rilevato lo sfruttamento attivo in rete.</description>
+      <pubDate>Mon, 23 Nov 2026 10:28:30 GMT</pubDate>
+      <guid isPermaLink="false">https://www.acn.gov.it/portale/w/whatsapp-rilevato-sfruttamento-in-rete-della-vulnerabilita-cve-2026-23871</guid>
+      
+      <dc:date>2026-11-23T10:28:30Z</dc:date>
+    </item>
+    <item>
+      <title>Rilevato sfruttamento attivo della CVE-2026-129448</title>
+      <link>https://www.acn.gov.it/portale/w/rilevato-sfruttamento-attivo-della-cve-2026-129448</link>
+      <description>Rilevato lo sfruttamento attivo in rete della CVE-2026-129448 - già sanata dal vendor - presente in Apache Roller, piattaforma open source per la creazione e la gestione di blog basati su Java. Tale vulnerabilità potrebbe consentire a un attaccante remoto non autenticato di eseguire codice arbitrario sui sistemi interessati.</description>
+      <pubDate>Mon, 23 Nov 2026 08:59:35 GMT</pubDate>
+      <guid isPermaLink="false">https://www.acn.gov.it/portale/w/rilevato-sfruttamento-attivo-della-cve-2026-129448</guid>
+      
+      <dc:date>2026-11-23T08:59:35Z</dc:date>
+    </item>
+    <item>
+      <title>Rilevate vulnerabilità in UFI Farm</title>
+      <link>https://www.acn.gov.it/portale/w/rilevate-vulnerabilita-in-ufi-farm</link>
+      <description>Nell’ambito del processo di divulgazione coordinata delle vulnerabilità (Coordinated Vulnerability Disclosure – CVD), si rendono note le vulnerabilità individuate da ricercatori di sicurezza, e coordinate da questo CSIRT in collaborazione con il vendor interessato, relative ad alcune componenti del gestionale UFI Farm, piattaforma software per la gestione informatizzata delle farmacie sviluppata da UFI - Unione Farmacie Informatizzate.</description>
+      <pubDate>Mon, 23 Nov 2026 08:27:32 GMT</pubDate>
+      <guid isPermaLink="false">https://www.acn.gov.it/portale/w/rilevate-vulnerabilita-in-ufi-farm</guid>
+      
+      <dc:date>2026-11-23T08:27:32Z</dc:date>
+    </item>
+    <item>
+      <title>Aggiornamenti di sicurezza per prodotti MongoDB</title>
+      <link>https://www.acn.gov.it/portale/w/aggiornamenti-di-sicurezza-per-prodotti-mongodb-6</link>
+      <description>MongoDB ha rilasciato aggiornamenti di sicurezza per sanare 17 vulnerabilità, di cui due con gravità "critica" presenti nelle componenti C# Driver e Java Driver. Tali vulnerabilità, qualora sfruttate, potrebbero consentire ad un utente malintenzionato, in presenza di determinate condizioni, di eludere i meccanismi di sicurezza, accedere ad informazioni sensibili e indurre le applicazioni interessate ad utilizzare risultati di interrogazione alterati.</description>
+      <pubDate>Fri, 20 Nov 2026 13:45:00 GMT</pubDate>
+      <guid isPermaLink="false">https://www.acn.gov.it/portale/w/aggiornamenti-di-sicurezza-per-prodotti-mongodb-6</guid>
+      
+      <dc:date>2026-11-20T13:45:00Z</dc:date>
+    </item>
+    <item>
+      <title>Risolte vulnerabilità in PHP</title>
+      <link>https://www.acn.gov.it/portale/w/risolte-vulnerabilita-in-php</link>
+      <description>Rilasciati aggiornamenti di sicurezza per sanare molteplici vulnerabilità, di cui 7 con gravità “critica” e 4 con gravità “alta”, in PHP, noto interprete del linguaggio di scripting per lo sviluppo web. Tra queste si evidenzia la CVE-2026-115560, già trattata nell'ambito dell'AL07/261021/CSIRT-ITA, per la quale risulta disponibile un Proof of Concept (PoC) in rete.</description>
+      <pubDate>Thu, 19 Nov 2026 16:25:42 GMT</pubDate>
+      <guid isPermaLink="false">https://www.acn.gov.it/portale/w/risolte-vulnerabilita-in-php</guid>
+      
+      <dc:date>2026-11-19T16:25:42Z</dc:date>
+    </item>
+    <item>
+      <title>Operational Summary - ottobre 2026</title>
+      <link>https://www.acn.gov.it/portale/w/operational-summary-ottobre-2026</link>
+      <description>Torna l'appuntamento mensile di CSIRT Italia sull'analisi e l'andamento della minaccia cyber con l'elenco delle vulnerabilità informatiche più gravi.</description>
+      <pubDate>Fri, 20 Nov 2026 17:08:42 GMT</pubDate>
+      <guid isPermaLink="false">https://www.acn.gov.it/portale/w/operational-summary-ottobre-2026</guid>
+      
+      <dc:date>2026-11-20T17:08:42Z</dc:date>
+    </item>
+    <item>
+      <title>Danfoss: rilevate vulnerabilità nei controller per la refrigerazione</title>
+      <link>https://www.acn.gov.it/portale/w/danfoss-rilevate-vulnerabilita-nei-controller-per-la-refrigerazione</link>
+      <description>Rilevate due nuove vulnerabilità con gravità "critica" nei prodotti delle serie AK-SC 355, AK-SM 800 e AK-SM 8xxA, controller per la supervisione e il controllo degli impianti di refrigerazione. Tali vulnerabilità, qualora sfruttate, potrebbero permettere a un attaccante remoto non autenticato di compromettere la disponibilità del servizio, eseguire codice arbitrario e ottenere accesso non autorizzato sui sistemi interessati.</description>
+      <pubDate>Fri, 20 Nov 2026 16:54:33 GMT</pubDate>
+      <guid isPermaLink="false">https://www.acn.gov.it/portale/w/danfoss-rilevate-vulnerabilita-nei-controller-per-la-refrigerazione</guid>
+      
+      <dc:date>2026-11-20T16:54:33Z</dc:date>
+    </item>
+    <item>
+      <title>Vulnerabilità in prodotti VMware</title>
+      <link>https://www.acn.gov.it/portale/w/vulnerabilita-in-prodotti-vmware-8</link>
+      <description>VMware ha rilasciato aggiornamenti di sicurezza per sanare alcune vulnerabilità, di cui una con gravità “critica” e due con gravità “alta”, nei prodotti SDDC Manager, VMware vCenter, VMware Cloud Foundation, VMware Telco Cloud Platform e VMware Telco Cloud Infrastructure.</description>
+      <pubDate>Thu, 19 Nov 2026 16:29:50 GMT</pubDate>
+      <guid isPermaLink="false">https://www.acn.gov.it/portale/w/vulnerabilita-in-prodotti-vmware-8</guid>
+      
+      <dc:date>2026-11-19T16:29:50Z</dc:date>
+    </item>
+    <item>
+      <title>Supply Chain Attack: versioni malevole del pacchetto Microsoft Agent Framework distribuite tramite PyPI</title>
+      <link>https://www.acn.gov.it/portale/w/supply-chain-attack-versioni-malevole-del-pacchetto-microsoft-agent-framework-distribuite-tramite-pypi</link>
+      <description>È stata rilevata una compromissione della supply chain che ha interessato il pacchetto Python agent-framework, associato al progetto Microsoft Agent Framework e distribuito attraverso il repository Python Package Index (PyPI).</description>
+      <pubDate>Fri, 20 Nov 2026 16:22:13 GMT</pubDate>
+      <guid isPermaLink="false">https://www.acn.gov.it/portale/w/supply-chain-attack-versioni-malevole-del-pacchetto-microsoft-agent-framework-distribuite-tramite-pypi</guid>
+      
+      <dc:date>2026-11-20T16:22:13Z</dc:date>
+    </item>
+    <item>
+      <title>Aggiornamenti di sicurezza per prodotti Cisco</title>
+      <link>https://www.acn.gov.it/portale/w/aggiornamenti-di-sicurezza-per-prodotti-cisco-1</link>
+      <description>Cisco ha rilasciato aggiornamenti di sicurezza per risolvere 34 vulnerabilità nei propri prodotti, di cui 5 con gravità “critica” e 17 con gravità “alta”. Tra queste, si evidenzia la CVE-2026-76466 che interessa i dispositivi Cisco Expressway Core (Expressway-C) e Cisco Expressway Edge (Expressway-E) e risulta sfruttata attivamente in rete.</description>
+      <pubDate>Wed, 21 Oct 2026 16:15:05 GMT</pubDate>
+      <guid isPermaLink="false">https://www.acn.gov.it/portale/w/aggiornamenti-di-sicurezza-per-prodotti-cisco-1</guid>
+      
+      <dc:date>2026-10-21T16:15:05Z</dc:date>
+    </item>
+    <item>
+      <title>Risolta vulnerabilità in prodotti Synology</title>
+      <link>https://www.acn.gov.it/portale/w/risolta-vulnerabilita-in-prodotti-synology</link>
+      <description>Synology ha rilasciato aggiornamenti di sicurezza per risolvere una vulnerabilità con gravità "critica" in DiskStation Manager (DSM) e BeeStation OS. Tale vulnerabilità, qualora sfruttata, potrebbe consentire ad un utente malintenzionato di compromettere la disponibilità del servizio e di scrivere/leggere file arbitrari sul filesystem dei sistemi interessati.</description>
+      <pubDate>Fri, 20 Nov 2026 13:33:51 GMT</pubDate>
+      <guid isPermaLink="false">https://www.acn.gov.it/portale/w/risolta-vulnerabilita-in-prodotti-synology</guid>
+      
+      <dc:date>2026-11-20T13:33:51Z</dc:date>
+    </item>
+    <item>
+      <title>Risolte vulnerabilità in prodotti Spring</title>
+      <link>https://www.acn.gov.it/portale/w/risolte-vulnerabilita-in-prodotti-spring-6</link>
+      <description>Aggiornamenti di sicurezza risolvono numerose vulnerabilità, di cui 5 con gravità "critica" e 24 con gravità “alta”, in vari prodotti Spring.</description>
+      <pubDate>Fri, 20 Nov 2026 11:30:36 GMT</pubDate>
+      <guid isPermaLink="false">https://www.acn.gov.it/portale/w/risolte-vulnerabilita-in-prodotti-spring-6</guid>
+      
+      <dc:date>2026-11-20T11:30:36Z</dc:date>
+    </item>
+    <item>
+      <title>Aggiornamenti di sicurezza per Ruby</title>
+      <link>https://www.acn.gov.it/portale/w/aggiornamenti-di-sicurezza-per-ruby-6</link>
+      <description>Aggiornamenti di sicurezza Ruby sanano 7 vulnerabilità presenti nel motore di elaborazione delle espressioni regolari (regex) e nelle funzionalità di conversione del maiuscolo/minuscolo delle stringhe. Si evidenzia che, per 6 delle 7 vulnerabilità, il vendor ha dichiarato di essere a conoscenza di Proof of Concept (PoC) in grado di dimostrare l'ottenimento dell'esecuzione remota di codice arbitrario o condizioni di corruzione della memoria in specifici scenari.</description>
+      <pubDate>Fri, 20 Nov 2026 10:34:40 GMT</pubDate>
+      <guid isPermaLink="false">https://www.acn.gov.it/portale/w/aggiornamenti-di-sicurezza-per-ruby-6</guid>
+      
+      <dc:date>2026-11-20T10:34:40Z</dc:date>
+    </item>
+    <item>
+      <title>Risolte vulnerabilità in prodotti ServiceNow</title>
+      <link>https://www.acn.gov.it/portale/w/risolte-vulnerabilita-in-prodotti-servicenow</link>
+      <description>Risolte due vulnerabilità con gravità "alta" che interessano ServiceNow AI Platform, piattaforma per l'integrazione di funzionalità di intelligenza artificiale, e Email Response AI Agent di Now Assist for CSM, componente per la gestione automatizzata delle risposte e-mail nell'ambito del servizio clienti. Le vulnerabilità, qualora sfruttate, potrebbero consentire a un utente malintenzionato di eludere i meccanismi di sicurezza ed eseguire codice arbitrario sui sistemi interessati.</description>
+      <pubDate>Fri, 20 Nov 2026 10:03:09 GMT</pubDate>
+      <guid isPermaLink="false">https://www.acn.gov.it/portale/w/risolte-vulnerabilita-in-prodotti-servicenow</guid>
+      
+      <dc:date>2026-11-20T10:03:09Z</dc:date>
+    </item>
+    <item>
+      <title>Rilevate vulnerabilità nel tema WordPress “Design Scuole Italia”</title>
+      <link>https://www.acn.gov.it/portale/w/rilevate-vulnerabilita-nel-tema-wordpress-design-scuole-italia-</link>
+      <description>Rilevate quattro vulnerabilità, di cui due con gravità “alta”, in Design Scuole Italia, noto tema WordPress destinato alla realizzazione dei siti istituzionali delle scuole italiane. Tali vulnerabilità, qualora sfruttate, potrebbero consentire ad un utente malintenzionato di leggere file arbitrari sul filesystem, eludere i meccanismi di autenticazione e sicurezza, reindirizzare le vittime verso URL arbitrari ed accedere a informazioni sensibili sui sistemi interessati.</description>
+      <pubDate>Tue, 15 Sep 2026 07:59:57 GMT</pubDate>
+      <guid isPermaLink="false">https://www.acn.gov.it/portale/w/rilevate-vulnerabilita-nel-tema-wordpress-design-scuole-italia-</guid>
+      
+      <dc:date>2026-09-15T07:59:57Z</dc:date>
+    </item>
+    <item>
+      <title>Risolte vulnerabilità in prodotti JetBrains</title>
+      <link>https://www.acn.gov.it/portale/w/risolte-vulnerabilita-in-prodotti-jetbrains-5</link>
+      <description>Rilevate molteplici nuove vulnerabilità, di cui 5 con gravità "critica" e 78 con gravità "alta", nei prodotti JetBrains TeamCity, IntelliJ IDEA, Junie e Junie CLI.</description>
+      <pubDate>Thu, 19 Nov 2026 10:32:53 GMT</pubDate>
+      <guid isPermaLink="false">https://www.acn.gov.it/portale/w/risolte-vulnerabilita-in-prodotti-jetbrains-5</guid>
+      
+      <dc:date>2026-11-19T10:32:53Z</dc:date>
+    </item>
+    <item>
+      <title>Aggiornamenti di sicurezza Mitel</title>
+      <link>https://www.acn.gov.it/portale/w/aggiornamenti-di-sicurezza-mitel</link>
+      <description>Rilasciati aggiornamenti di sicurezza per risolvere 5 vulnerabilità, di cui due con gravità “critica”, presenti nella componente Audio, Web and Video Conferencing (AWV) di Mitel MiCollab. Tali vulnerabilità, qualora sfruttate, potrebbero consentire a un attaccante remoto non autenticato di eseguire codice arbitrario sui sistemi interessati.</description>
+      <pubDate>Tue, 17 Nov 2026 13:03:07 GMT</pubDate>
+      <guid isPermaLink="false">https://www.acn.gov.it/portale/w/aggiornamenti-di-sicurezza-mitel</guid>
+      
+      <dc:date>2026-11-17T13:03:07Z</dc:date>
+    </item>
+    <item>
+      <title>Vulnerabilità in prodotti ASUS</title>
+      <link>https://www.acn.gov.it/portale/w/vulnerabilita-in-prodotti-asus-7</link>
+      <description>ASUS ha rilasciato aggiornamenti di sicurezza per risolvere 12 vulnerabilità, di cui 4 con con gravità "critica" e 5 con gravità "alta", che interessano Control Center, Armoury Crate, System Control Interface, DisplayWidget Center e il firmware di diversi modelli di router. Tra queste si evidenza la CVE-2026-114202 per la quale risulta disponibile un Proof of Concept (PoC) in rete.</description>
+      <pubDate>Thu, 19 Nov 2026 14:15:36 GMT</pubDate>
+      <guid isPermaLink="false">https://www.acn.gov.it/portale/w/vulnerabilita-in-prodotti-asus-7</guid>
+      
+      <dc:date>2026-11-19T14:15:36Z</dc:date>
+    </item>
+    <item>
+      <title>Rilevate vulnerabilità in prodotti Splunk</title>
+      <link>https://www.acn.gov.it/portale/w/rilevate-vulnerabilita-in-prodotti-splunk-7</link>
+      <description>Splunk ha rilasciato aggiornamenti di sicurezza per sanare molteplici vulnerabilità, di cui 5 con gravità “critica” e 53 con gravità “alta”, nei prodotti Splunk SOAR, Splunk Enterprise, Splunk App for Stream, Splunk AI Assistant e Splunk Enterprise Security.</description>
+      <pubDate>Thu, 19 Nov 2026 14:04:16 GMT</pubDate>
+      <guid isPermaLink="false">https://www.acn.gov.it/portale/w/rilevate-vulnerabilita-in-prodotti-splunk-7</guid>
+      
+      <dc:date>2026-11-19T14:04:16Z</dc:date>
+    </item>
+    <item>
+      <title>Java4Shell: aggiornamenti e valutazioni di impatto da parte dei vendor interessati</title>
+      <link>https://www.acn.gov.it/portale/w/java4shell-aggiornamenti-e-valutazioni-di-impatto-da-parte-dei-vendor-interessati</link>
+      <description>Prosegue la pubblicazione di aggiornamenti di sicurezza e comunicazioni da parte dei fornitori di prodotti hardware e software in relazione alla vulnerabilità CVE-2026-114938, nota come "Java4Shell" e già trattata da questo CSIRT Italia nell'ambito del AL07/261118/CSIRT-ITA. La vulnerabilità interessa specifiche versioni di OpenJDK, Oracle Java SE e Oracle GraalVM e può coinvolgere applicazioni e prodotti di terze parti che integrano versioni vulnerabili del relativo ambiente di esecuzione.</description>
+      <pubDate>Thu, 19 Nov 2026 10:22:00 GMT</pubDate>
+      <guid isPermaLink="false">https://www.acn.gov.it/portale/w/java4shell-aggiornamenti-e-valutazioni-di-impatto-da-parte-dei-vendor-interessati</guid>
+      
+      <dc:date>2026-11-19T10:22:00Z</dc:date>
+    </item>
+  </channel>
+</rss>

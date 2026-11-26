@@ -1,0 +1,89 @@
+{
+ "me_ag": {
+  "error": "<HTTPError 403: 'Forbidden'>"
+ },
+ "ca_ag": {
+  "status": 200,
+  "type": "text/html; charset=utf-8",
+  "len": 87130,
+  "url": "https://oag.ca.gov/privacy/databreach/list"
+ },
+ "wa_soc": {
+  "status": 200,
+  "type": "application/json;charset=utf-8",
+  "len": 2469,
+  "url": "https://data.wa.gov/resource/sb4j-ca4h.json?$limit=5&$order=datestart%20DESC"
+ },
+ "wa_ag": {
+  "status": 200,
+  "type": "text/html; charset=UTF-8",
+  "len": 157284,
+  "url": "https://www.atg.wa.gov/data-breach-notifications"
+ },
+ "vt_ag": {
+  "error": "<HTTPError 404: 'Not Found'>"
+ },
+ "hibp": {
+  "status": 200,
+  "type": "application/json",
+  "len": 1137511,
+  "url": "https://haveibeenpwned.com/api/v3/breaches"
+ },
+ "rlook_recent": {
+  "status": 200,
+  "type": "application/json",
+  "len": 75649,
+  "url": "https://www.ransomlook.io/api/recent"
+ },
+ "rlook_last": {
+  "status": 200,
+  "type": "application/json",
+  "len": 93080,
+  "url": "https://www.ransomlook.io/api/last/2"
+ },
+ "ccs": {
+  "status": 200,
+  "type": "application/xml",
+  "len": 126156,
+  "url": "https://www.cyber.gc.ca/api/cccs/atom/v1/get?feed=alerts_advisories&lang=en"
+ },
+ "ccs_news": {
+  "status": 200,
+  "type": "application/xml",
+  "len": 245,
+  "url": "https://www.cyber.gc.ca/api/cccs/atom/v1/get?feed=news&lang=en"
+ },
+ "certpl": {
+  "status": 200,
+  "type": "text/xml",
+  "len": 60967,
+  "url": "https://cert.pl/en/rss.xml"
+ },
+ "certpl_pl": {
+  "status": 200,
+  "type": "text/xml",
+  "len": 60698,
+  "url": "https://cert.pl/rss.xml"
+ },
+ "incibe": {
+  "status": 200,
+  "type": "application/rss+xml; charset=utf-8",
+  "len": 142582,
+  "url": "https://www.incibe.es/incibe-cert/alerta-temprana/avisos/feed"
+ },
+ "incibe2": {
+  "error": "TimeoutError('The read operation timed out')"
+ },
+ "acn": {
+  "status": 200,
+  "type": "text/xml;charset=UTF-8",
+  "len": 41392,
+  "url": "https://www.acn.gov.it/portale/feedrss/-/journal/rss/20119/723192"
+ },
+ "csirtit": {
+  "error": "<HTTPError 403: 'Forbidden'>"
+ },
+ "acn2": {
+  "error": "<HTTPError 404: 'Not Found'>"
+ }
+}
