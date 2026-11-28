@@ -1,0 +1,507 @@
+{
+ "sources": {
+  "rl": {
+   "name": "ransomware.live \u2014 leak-site claims",
+   "cat": "claims",
+   "ok": true,
+   "rows": 100,
+   "seconds": 0.5,
+   "latest": "2026-11-28T14:52:10Z"
+  },
+  "rl_att": {
+   "name": "ransomware.live \u2014 press-reported cyberattacks",
+   "cat": "attacks",
+   "ok": true,
+   "rows": 100,
+   "seconds": 0.5,
+   "latest": "2026-11-28T00:00:00Z"
+  },
+  "cw": {
+   "name": "Cyberwatch \u2014 press-reported cyberattacks, curated (LeMagIT)",
+   "cat": "attacks",
+   "ok": true,
+   "rows": 4487,
+   "seconds": 0.4,
+   "latest": "2026-11-28T00:00:00Z"
+  },
+  "pt": {
+   "name": "ransomware.live mirror (privtools, GitHub)",
+   "cat": "claims",
+   "ok": true,
+   "rows": 1324,
+   "seconds": 0.2,
+   "latest": "2026-11-28T03:44:02Z"
+  },
+  "tc": {
+   "name": "ThreatCluster Ransomware-Intel (GitHub)",
+   "cat": "claims",
+   "ok": true,
+   "rows": 10,
+   "seconds": 0.1,
+   "latest": "2026-11-27T15:09:03Z"
+  },
+  "sec": {
+   "name": "SEC EDGAR \u2014 Form 8-K cyber disclosures",
+   "cat": "regulatory",
+   "ok": true,
+   "rows": 19,
+   "seconds": 1.6,
+   "latest": "2026-11-24T00:00:00Z"
+  },
+  "rlook": {
+   "name": "RansomLook \u2014 leak-site claims (independent tracker)",
+   "cat": "claims",
+   "ok": true,
+   "rows": 100,
+   "seconds": 0.8,
+   "latest": "2026-11-28T18:17:05Z"
+  },
+  "hibp": {
+   "name": "Have I Been Pwned \u2014 confirmed data breaches",
+   "cat": "regulatory",
+   "ok": true,
+   "rows": 34,
+   "seconds": 0.6,
+   "latest": "2026-11-23T06:36:04Z"
+  },
+  "ca_ag": {
+   "name": "California Attorney General \u2014 breach notices",
+   "cat": "regulatory",
+   "ok": true,
+   "rows": 50,
+   "seconds": 0.6,
+   "latest": "2026-11-25T12:00:00Z"
+  },
+  "wa_ag": {
+   "name": "Washington Attorney General \u2014 breach notices",
+   "cat": "regulatory",
+   "ok": true,
+   "rows": 200,
+   "seconds": 0.5,
+   "latest": "2026-11-14T00:00:00Z"
+  },
+  "bleeping": {
+   "name": "BleepingComputer",
+   "cat": "press",
+   "ok": true,
+   "rows": 8,
+   "seconds": 0.1,
+   "latest": "2026-11-28T17:45:59Z"
+  },
+  "record": {
+   "name": "The Record",
+   "cat": "press",
+   "ok": true,
+   "rows": 5,
+   "seconds": 0.1,
+   "latest": "2026-11-27T14:15:00Z"
+  },
+  "secweek": {
+   "name": "SecurityWeek",
+   "cat": "press",
+   "ok": true,
+   "rows": 7,
+   "seconds": 0.2,
+   "latest": "2026-11-27T11:00:00Z"
+  },
+  "thn": {
+   "name": "The Hacker News",
+   "cat": "press",
+   "ok": true,
+   "rows": 27,
+   "seconds": 0.3,
+   "latest": "2026-11-28T08:08:11Z"
+  },
+  "darkread": {
+   "name": "Dark Reading",
+   "cat": "press",
+   "ok": true,
+   "rows": 22,
+   "seconds": 0.9,
+   "latest": "2026-11-27T14:00:00Z"
+  },
+  "secaff": {
+   "name": "Security Affairs",
+   "cat": "press",
+   "ok": true,
+   "rows": 7,
+   "seconds": 0.5,
+   "latest": "2026-11-28T10:51:27Z"
+  },
+  "dbnet": {
+   "name": "DataBreaches.net",
+   "cat": "press",
+   "ok": true,
+   "rows": 10,
+   "seconds": 0.1,
+   "latest": "2026-11-28T13:34:03Z"
+  },
+  "csdive": {
+   "name": "Cybersecurity Dive",
+   "cat": "press",
+   "ok": true,
+   "rows": 3,
+   "seconds": 0.1,
+   "latest": "2026-11-27T22:06:30Z"
+  },
+  "register": {
+   "name": "The Register",
+   "cat": "press",
+   "ok": true,
+   "rows": 21,
+   "seconds": 0.6,
+   "latest": "2026-11-27T10:01:00Z"
+  },
+  "lemagit": {
+   "name": "LeMagIT",
+   "cat": "press",
+   "ok": true,
+   "rows": 4,
+   "seconds": 0.2,
+   "latest": "2026-11-27T10:06:00Z"
+  },
+  "zataz": {
+   "name": "ZATAZ",
+   "cat": "press",
+   "ok": true,
+   "rows": 5,
+   "seconds": 0.4,
+   "latest": "2026-11-25T07:40:26Z"
+  },
+  "lmi": {
+   "name": "Le Monde Informatique",
+   "cat": "press",
+   "ok": true,
+   "rows": 13,
+   "seconds": 0.7,
+   "latest": "2026-11-27T15:24:08Z"
+  },
+  "cs360": {
+   "name": "Cybersecurity360",
+   "cat": "press",
+   "ok": true,
+   "rows": 4,
+   "seconds": 0.1,
+   "latest": "2026-11-27T18:29:00Z"
+  },
+  "heise": {
+   "name": "heise Security",
+   "cat": "press",
+   "ok": true,
+   "rows": 5,
+   "seconds": 0.6,
+   "latest": "2026-11-27T15:26:00Z"
+  },
+  "unaaldia": {
+   "name": "Una al d\u00eda",
+   "cat": "press",
+   "ok": true,
+   "rows": 1,
+   "seconds": 0.1,
+   "latest": "2026-10-14T10:36:08Z"
+  },
+  "fooddive": {
+   "name": "Food Dive",
+   "cat": "trade",
+   "ok": true,
+   "rows": 0,
+   "seconds": 0.1
+  },
+  "justfood": {
+   "name": "Just Food",
+   "cat": "trade",
+   "ok": true,
+   "rows": 0,
+   "seconds": 0.1
+  },
+  "dairyrep": {
+   "name": "DairyReporter",
+   "cat": "trade",
+   "ok": true,
+   "rows": 0,
+   "seconds": 0.4
+  },
+  "foodnav": {
+   "name": "FoodNavigator",
+   "cat": "trade",
+   "ok": true,
+   "rows": 0,
+   "seconds": 0.3
+  },
+  "cisa": {
+   "name": "CISA advisories",
+   "cat": "gov",
+   "ok": true,
+   "rows": 30,
+   "seconds": 0.2,
+   "latest": "2026-11-27T12:00:00Z"
+  },
+  "certfr": {
+   "name": "CERT-FR alertes",
+   "cat": "gov",
+   "ok": true,
+   "rows": 40,
+   "seconds": 0.2,
+   "latest": "2026-11-18T00:00:00Z"
+  },
+  "certfr_a": {
+   "name": "CERT-FR actualit\u00e9",
+   "cat": "gov",
+   "ok": true,
+   "rows": 40,
+   "seconds": 0.1,
+   "latest": "2026-11-23T00:00:00Z"
+  },
+  "ncsc": {
+   "name": "NCSC UK",
+   "cat": "gov",
+   "ok": true,
+   "rows": 20,
+   "seconds": 0.1,
+   "latest": "2026-11-24T12:00:00Z"
+  },
+  "ccs": {
+   "name": "Canadian Centre for Cyber Security",
+   "cat": "gov",
+   "ok": true,
+   "rows": 50,
+   "seconds": 0.2,
+   "latest": "2026-11-27T18:42:19Z"
+  },
+  "acn": {
+   "name": "CSIRT Italia (ACN)",
+   "cat": "gov",
+   "ok": true,
+   "rows": 50,
+   "seconds": 0.9,
+   "latest": "2026-11-27T15:52:11Z"
+  },
+  "incibe": {
+   "name": "INCIBE-CERT (Spain)",
+   "cat": "gov",
+   "ok": true,
+   "rows": 10,
+   "seconds": 16.2,
+   "latest": "2026-11-27T08:14:10Z"
+  },
+  "certpl": {
+   "name": "CERT Polska",
+   "cat": "gov",
+   "ok": true,
+   "rows": 100,
+   "seconds": 0.5,
+   "latest": "2026-11-27T11:55:00Z"
+  },
+  "gn_en": {
+   "name": "Google News \u2014 EN/US",
+   "cat": "aggregator",
+   "ok": true,
+   "rows": 42,
+   "seconds": 0.4,
+   "latest": "2026-11-03T08:00:00Z"
+  },
+  "gn_uk": {
+   "name": "Google News \u2014 EN/GB",
+   "cat": "aggregator",
+   "ok": true,
+   "rows": 23,
+   "seconds": 0.3,
+   "latest": "2026-11-28T18:44:15Z"
+  },
+  "gn_au": {
+   "name": "Google News \u2014 EN/AU",
+   "cat": "aggregator",
+   "ok": true,
+   "rows": 3,
+   "seconds": 0.3,
+   "latest": "2026-11-28T06:39:30Z"
+  },
+  "gn_fr": {
+   "name": "Google News \u2014 FR/FR",
+   "cat": "aggregator",
+   "ok": true,
+   "rows": 2,
+   "seconds": 0.3,
+   "latest": "2026-11-27T14:33:00Z"
+  },
+  "gn_it": {
+   "name": "Google News \u2014 IT/IT",
+   "cat": "aggregator",
+   "ok": true,
+   "rows": 9,
+   "seconds": 0.3,
+   "latest": "2026-11-28T16:10:32Z"
+  },
+  "gn_es": {
+   "name": "Google News \u2014 ES/ES",
+   "cat": "aggregator",
+   "ok": true,
+   "rows": 6,
+   "seconds": 0.3,
+   "latest": "2026-11-27T23:25:19Z"
+  },
+  "gn_mx": {
+   "name": "Google News \u2014 ES/MX",
+   "cat": "aggregator",
+   "ok": true,
+   "rows": 10,
+   "seconds": 0.4,
+   "latest": "2026-11-28T05:32:45Z"
+  },
+  "gn_br": {
+   "name": "Google News \u2014 PT/BR",
+   "cat": "aggregator",
+   "ok": true,
+   "rows": 6,
+   "seconds": 0.3,
+   "latest": "2026-11-28T14:59:26Z"
+  },
+  "gn_trade_en": {
+   "name": "Food & dairy trade press, EN (via Google News)",
+   "cat": "trade",
+   "ok": true,
+   "rows": 28,
+   "seconds": 0.4,
+   "latest": "2026-11-10T17:45:36Z"
+  },
+  "gn_trade_fr": {
+   "name": "Presse agroalimentaire, FR (via Google News)",
+   "cat": "trade",
+   "ok": true,
+   "rows": 5,
+   "seconds": 0.3,
+   "latest": "2026-11-03T08:00:00Z"
+  },
+  "gn_cybernews": {
+   "name": "Cybernews (via Google News)",
+   "cat": "press",
+   "ok": true,
+   "rows": 14,
+   "seconds": 0.3,
+   "latest": "2026-11-28T08:41:52Z"
+  },
+  "gn_indcyber": {
+   "name": "Industrial Cyber (via Google News)",
+   "cat": "press",
+   "ok": true,
+   "rows": 1,
+   "seconds": 0.2,
+   "latest": "2026-11-27T07:42:46Z"
+  },
+  "gn_rhc": {
+   "name": "Red Hot Cyber (via Google News)",
+   "cat": "press",
+   "ok": true,
+   "rows": 5,
+   "seconds": 0.2,
+   "latest": "2026-11-27T18:27:00Z"
+  },
+  "gn_de": {
+   "name": "Google News \u2014 DE/DE",
+   "cat": "aggregator",
+   "ok": true,
+   "rows": 5,
+   "seconds": 0.2,
+   "latest": "2026-11-28T13:47:00Z"
+  },
+  "gn_ca": {
+   "name": "Google News \u2014 EN/CA",
+   "cat": "aggregator",
+   "ok": true,
+   "rows": 6,
+   "seconds": 0.4,
+   "latest": "2026-11-28T17:53:03Z"
+  },
+  "gn_cafr": {
+   "name": "Google News \u2014 FR/CA",
+   "cat": "aggregator",
+   "ok": true,
+   "rows": 6,
+   "seconds": 0.3,
+   "latest": "2026-11-28T16:36:00Z"
+  },
+  "gn_nl": {
+   "name": "Google News \u2014 NL/NL",
+   "cat": "aggregator",
+   "ok": true,
+   "rows": 0,
+   "seconds": 0.2
+  },
+  "gn_pl": {
+   "name": "Google News \u2014 PL/PL",
+   "cat": "aggregator",
+   "ok": true,
+   "rows": 2,
+   "seconds": 0.3,
+   "latest": "2026-11-26T09:48:18Z"
+  },
+  "gn_pt": {
+   "name": "Google News \u2014 PT/PT",
+   "cat": "aggregator",
+   "ok": true,
+   "rows": 5,
+   "seconds": 0.4,
+   "latest": "2026-11-27T22:48:55Z"
+  },
+  "gn_ar": {
+   "name": "Google News \u2014 ES/AR",
+   "cat": "aggregator",
+   "ok": true,
+   "rows": 10,
+   "seconds": 0.3,
+   "latest": "2026-11-28T05:32:45Z"
+  },
+  "gn_co": {
+   "name": "Google News \u2014 ES/CO",
+   "cat": "aggregator",
+   "ok": true,
+   "rows": 10,
+   "seconds": 0.3,
+   "latest": "2026-11-28T05:32:45Z"
+  },
+  "gn_cl": {
+   "name": "Google News \u2014 ES/CL",
+   "cat": "aggregator",
+   "ok": true,
+   "rows": 8,
+   "seconds": 0.6,
+   "latest": "2026-11-28T05:32:45Z"
+  },
+  "gn_in": {
+   "name": "Google News \u2014 EN/IN",
+   "cat": "aggregator",
+   "ok": true,
+   "rows": 2,
+   "seconds": 0.3,
+   "latest": "2026-11-28T06:39:30Z"
+  },
+  "gn_id": {
+   "name": "Google News \u2014 ID/ID",
+   "cat": "aggregator",
+   "ok": true,
+   "rows": 17,
+   "seconds": 0.3,
+   "latest": "2026-11-28T11:07:09Z"
+  },
+  "gn_tr": {
+   "name": "Google News \u2014 TR/TR",
+   "cat": "aggregator",
+   "ok": true,
+   "rows": 3,
+   "seconds": 0.3,
+   "latest": "2026-11-28T06:03:15Z"
+  },
+  "gn_ae": {
+   "name": "Google News \u2014 AR/AE",
+   "cat": "aggregator",
+   "ok": true,
+   "rows": 5,
+   "seconds": 0.3,
+   "latest": "2026-11-27T16:24:01Z"
+  }
+ },
+ "built_utc": "2026-11-28T19:11:25Z",
+ "since": "2026-11-24T20:56:18Z",
+ "count": 38564,
+ "new": 0
+}
